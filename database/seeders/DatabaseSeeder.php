@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
         $this->call(RoleUserSeeder::class);
         $this->call(CompartmentSeeder::class);
         $this->call(VolumeSeeder::class);
+        $this->call(MeterTypeSeeder::class);
 
     }
 }

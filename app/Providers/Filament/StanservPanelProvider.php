@@ -37,7 +37,8 @@ class StanservPanelProvider extends PanelProvider
             ->brandName('Stanserv Genuine Services')
             ->defaultThemeMode(ThemeMode::Light)
             ->colors([
-                'primary' => Color::Teal,
+//                'primary' => Color::Teal,
+                'primary' => Color::rgb('rgb(45,53,139)'),
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
@@ -68,7 +69,8 @@ class StanservPanelProvider extends PanelProvider
 //            ->topNavigation()
 //            ->topbar(false)
 //            ->breadcrumbs(false)
-            ->brandLogo(asset('images/logo.png'))
+//            ->brandLogo(asset('images/logo.png'))
+                ->brandLogo(url('https://www.econet.co.zw/wp-content/uploads/2022/05/EconetLogo.png'))
             ->favicon(asset('images/logo.png'))
             ->brandLogoHeight(1)
 //            ->sidebarWidth('17rem')
@@ -80,6 +82,9 @@ class StanservPanelProvider extends PanelProvider
                 NavigationGroup::make()
                     ->label('Pumps')
                     ->icon('heroicon-o-pencil'),
+                NavigationGroup::make()
+                    ->label('Meters')
+                    ->icon('heroicon-o-signal'),
                 NavigationGroup::make()
                     ->label('Truck Details')
                     ->icon('heroicon-o-truck'),

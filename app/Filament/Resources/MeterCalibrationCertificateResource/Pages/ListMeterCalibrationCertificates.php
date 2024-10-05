@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Filament\Resources\CertificateResource\Pages;
+namespace App\Filament\Resources\MeterCalibrationCertificateResource\Pages;
 
-use App\Filament\Resources\CertificateResource;
+use App\Filament\Resources\MeterCalibrationCertificateResource;
 use Filament\Resources\Pages\ListRecords;
 use pxlrbt\FilamentExcel\Actions\Pages\ExportAction;
 use pxlrbt\FilamentExcel\Columns\Column;
 use pxlrbt\FilamentExcel\Exports\ExcelExport;
 
-class ListCertificates extends ListRecords
+class ListMeterCalibrationCertificates extends ListRecords
 {
-    protected static string $resource = CertificateResource::class;
+    protected static string $resource = MeterCalibrationCertificateResource::class;
 
     protected function getHeaderActions(): array
     {

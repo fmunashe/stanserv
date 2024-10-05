@@ -1,30 +1,27 @@
 <?php
 
-namespace App\Filament\Resources\CertificateResource\Pages;
+namespace App\Filament\Resources\MeterTypeResource\Pages;
 
-use App\Filament\Resources\CertificateResource;
+use App\Filament\Resources\MeterTypeResource;
+use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 use pxlrbt\FilamentExcel\Actions\Pages\ExportAction;
-use pxlrbt\FilamentExcel\Columns\Column;
 use pxlrbt\FilamentExcel\Exports\ExcelExport;
 
-class ListCertificates extends ListRecords
+class ListMeterTypes extends ListRecords
 {
-    protected static string $resource = CertificateResource::class;
+    protected static string $resource = MeterTypeResource::class;
 
     protected function getHeaderActions(): array
     {
         return [
+            Actions\CreateAction::make(),
             ExportAction::make()
                 ->exports([
                     ExcelExport::make()
                         ->fromTable()
                         ->askForFilename()
                         ->askForWriterType()
-                        ->withColumns([
-                            Column::make('created_at'),
-                            Column::make('updated_at'),
-                        ])
                 ]),
         ];
     }

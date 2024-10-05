@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\PumpCalibration;
+use App\Models\MeterCalibration;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,9 +11,9 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('certificates', function (Blueprint $table) {
-            $table->id();
-            $table->foreignIdFor(PumpCalibration::class)->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+        Schema::create('meter_calibration_certificates', function (Blueprint $table) {
+            $table->uuid('id')->primary();
+            $table->foreignIdFor(MeterCalibration::class)->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('certificate_number');
             $table->timestamps();
             $table->softDeletes();
@@ -25,6 +25,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('certificates');
+        Schema::dropIfExists('meter_calibration_certificates');
     }
 };
