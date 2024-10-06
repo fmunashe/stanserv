@@ -22,7 +22,7 @@ class ViewMeterCalibration extends ViewRecord
             Action::make('Generate Certificate')
                 ->icon('heroicon-m-arrow-down')
                 ->color('warning')
-                ->url(fn(MeterCalibration $record) => route('pumpCalibrationCertificate', $record))
+                ->url(fn(MeterCalibration $record) => route('meterCalibrationCertificate', $record))
                 ->openUrlInNewTab(),
             Actions\Action::make('updateAverages')
                 ->icon('heroicon-m-cog')

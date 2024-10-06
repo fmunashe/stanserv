@@ -13,6 +13,28 @@
 
 </header>
 
+<footer>
+    <div class="margin-top">
+        <table class="w-full margin-top">
+            <tr>
+                <td style="width: 40%">
+
+                </td>
+                <td style="width: 60%">
+                    <table class="w-full">
+                        <tr>
+                            <td style="width: 80%">
+                                <h3>www.sgs-stanserv.com</h3>
+                            </td>
+                            <td style="width: 50%"><h5>CERTIFICATE
+                                    NO. {{$record->certificate->certificate_number??null}}</h5></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+</footer>
 <table class="w-full">
     <tr>
         <td class="w-half">
@@ -166,24 +188,24 @@
 <div class="margin-top">
     <table class="w-full" style="border-spacing: 0 15px;">
         <tr>
-            <td class="w-half">DATE OF CALIBRATION</td>
-            <td>:{{$record->calibration_date??null}}</td>
+            <td class="w-half">DATE OF METER CALIBRATION</td>
+            <td>:&nbsp; &nbsp;  {{\Carbon\Carbon::parse($record->calibration_date??null)->format('d   F   Y')}}</td>
         </tr>
         <tr>
-            <td class="w-half">DATE OF NEXT CALIBRATION</td>
-            <td>:{{$record->next_date_of_calibration??null}}</td>
+            <td class="w-half">DATE OF NEXT RE-CALIBRATION</td>
+            <td>:&nbsp; &nbsp;  {{\Carbon\Carbon::parse($record->next_date_of_calibration??null)->format('d   F   Y')}}</td>
         </tr>
         <tr>
             <td class="w-half">CALIBRATED BY TECHNICIAN</td>
-            <td>:{{$record->calibrated_by??null}}</td>
+            <td>:&nbsp; &nbsp;{{$record->calibrated_by??null}}</td>
         </tr>
         <tr>
             <td class="w-half">ASSISTED BY</td>
-            <td>:{{$record->assisted_by??null}}</td>
+            <td>:&nbsp; &nbsp;{{$record->assisted_by??null}}</td>
         </tr>
         <tr>
             <td class="w-half">TRADE MEASURES INSPECTOR</td>
-            <td>:{{$record->trade_measures_inspector??null}}</td>
+            <td>:&nbsp; &nbsp;{{$record->trade_measures_inspector??null}}</td>
         </tr>
         <tr>
             <td class="w-half">AUTHORIZED SIGNATURE</td>

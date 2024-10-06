@@ -75,14 +75,15 @@ class MeterCalibrationController extends Controller
 
         $qrcode = base64_encode(QrCode::format('png')->size(500)->generate($verificationLink));
         $pdf = Pdf::loadView('meter-certificate', ['record' => $record, 'qrcode' => $qrcode]);
+        $pdf->setPaper('A3','landscape');
         $pdf->output();
         $canvas = $pdf->getDomPDF()->getCanvas();
         $height = $canvas->get_height();
         $width = $canvas->get_width();
-        $canvas->set_opacity(0.2, "Multiply");
-        $canvas->page_text($width / 3, $height / 2, 'PASSED', null,
-            70, array(0, 0, 0), 2, 2, -30);
-        $canvas->page_text($width / 1.15, $height / 1.05, "Page {PAGE_NUM} of {PAGE_COUNT}", null, 12);
+        $canvas->set_opacity(0.9, "Multiply");
+//        $canvas->page_text($width / 2.5, $height / 2, 'PASSED', null,
+//            70, array(0, 0, 0), 2, 2, -30);
+        $canvas->page_text($width / 10.5, $height / 1.0995, "Page {PAGE_NUM} of {PAGE_COUNT}", null, 12);
         return $pdf->stream($record->meterOwner->company_name . 'meterCalibrationCertificate' . '.pdf');
     }
 }
