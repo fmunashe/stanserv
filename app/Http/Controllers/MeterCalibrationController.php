@@ -83,7 +83,7 @@ class MeterCalibrationController extends Controller
         $canvas->set_opacity(0.9, "Multiply");
 //        $canvas->page_text($width / 2.5, $height / 2, 'PASSED', null,
 //            70, array(0, 0, 0), 2, 2, -30);
-        $canvas->page_text($width / 10.5, $height / 1.0995, "Page {PAGE_NUM} of {PAGE_COUNT}", null, 12);
+        $canvas->page_text($width / 10.6, $height / 1.11, "Page {PAGE_NUM} of {PAGE_COUNT}", null, 12);
         return $pdf->stream($record->meterOwner->company_name . 'meterCalibrationCertificate' . '.pdf');
     }
 }

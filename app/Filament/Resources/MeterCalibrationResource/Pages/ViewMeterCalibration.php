@@ -27,15 +27,20 @@ class ViewMeterCalibration extends ViewRecord
             Actions\Action::make('updateAverages')
                 ->icon('heroicon-m-cog')
                 ->color('success')
-                ->label('Update Calibration Averages')
+                ->label('Calculate Averages')
                 ->action(function ($record, array $data): void {
                     if ($data['confirm']) {
                         $averagePercentageError = $record->calibrationMeasureDetails()->latest()->take(4)->pluck('percentage_error')->avg();
                         $averageMeterFactor = $record->calibrationMeasureDetails()->latest()->take(4)->pluck('meter_factor')->avg();
+                        $adjustedRecord = $record->calibrationMeasureDetails()->where('remarks','=','Adjusted')->first();
+                        $adjustments = $record->calibrationMeasureDetails()->where('run_number','<=',$adjustedRecord->run_number)->pluck('percentage_error')->avg();
+                        Log::info("adjusted record ",[$adjustedRecord]);
+                        Log::info("adjustments ",[$adjustments]);
                         MeterCalibration::query()->where('id', '=', $record->id)
                             ->update([
                                 'avg_meter_factor_for_the_last_four_readings' => $averageMeterFactor,
-                                'avg_meter_percentage_error_for_the_last_four_readings' => $averagePercentageError
+                                'avg_meter_percentage_error_for_the_last_four_readings' => $averagePercentageError,
+                                'avg_meter_percentage_error_before_adjustments' => number_format($adjustments,3,'.','')
                             ]);
                         Notification::make()
                             ->title('Success')

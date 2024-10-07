@@ -211,17 +211,14 @@ class MeterCalibrationResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('avg_meter_percentage_error_before_adjustments')
                     ->label('AVG % Error Before Adjustments ')
-                    ->numeric()
                     ->sortable()
                     ->toggleable(),
                 Tables\Columns\TextColumn::make('avg_meter_percentage_error_for_the_last_four_readings')
                     ->label('AVG % Error Last 4 Readings')
-                    ->numeric()
                     ->sortable()
                     ->toggleable(),
                 Tables\Columns\TextColumn::make('avg_meter_factor_for_the_last_four_readings')
                     ->label('AVG Meter Factor Last 4 Readings')
-                    ->numeric()
                     ->sortable()
                     ->toggleable(),
                 Tables\Columns\TextColumn::make('created_at')

@@ -1,5 +1,5 @@
 @page {
-    margin: 110px 15px 110px;
+    margin: 110px 40px 110px;
 }
 
 body {
@@ -54,6 +54,9 @@ table {
 
 .tr {
     border: 0.5px gray dotted;
+}
+.non-tr {
+    border: 0;
 }
 
 table.products {

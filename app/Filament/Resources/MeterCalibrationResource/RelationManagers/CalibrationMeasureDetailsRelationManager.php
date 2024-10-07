@@ -30,7 +30,7 @@ class CalibrationMeasureDetailsRelationManager extends RelationManager
                         if ($get('run_number') == 1) {
                             $set('remarks', 'Wetting run');
                         } else {
-                            $set('remarks', 'Adjusted');
+                            $set('remarks', null);
                         }
                     }),
                 Forms\Components\TextInput::make('master_meter_flow_rate')
@@ -100,9 +100,9 @@ class CalibrationMeasureDetailsRelationManager extends RelationManager
                     ->searchable()
                     ->options([
                         'Wetting Run' => 'Wetting Run',
-                        'Adjusted' => 'Adjusted'
+                        'Adjusted' => 'Adjusted',
+                        'Not Adjusted' => 'Not Adjusted'
                     ])
-                    ->required()
                     ->columnSpanFull()
                     ->live(),
             ])

@@ -38,121 +38,258 @@
 <table class="w-full">
     <tr>
         <td class="w-half">
-{{--            <img src="{{ public_path('images/logo.png') }}" alt="saz"/>--}}
         </td>
-        <td class="w-half">
-{{--            <h4>Pump Calibration Certificate No. : {{ $record->certificate->certificate_number??null }}</h4>--}}
+        <td class="w-quarter">
+            <h4>METER CALIBRATION CERTIFICATE</h4>
         </td>
+        <td class="w-half"></td>
     </tr>
 </table>
 
 <div class="margin-top">
     <table class="w-full">
         <tr>
+            <td class="w-half" style="border-right: gray solid 1px">
+                <table class="w-full">
+                    <tr>
+                        <td class="w-three-quarters">
+                            <table class="w-full">
+                                <tr>
+                                    <td class="w-half">
+                                        <span class="uppercase">Meter Owner</span>
+                                    </td>
+                                    <td class="w-half uppercase">
+                                        :<span
+                                            style="padding-left: 3%"> {{$record->meterOwner->company_name??null}}</span>
+                                    </td>
+                                </tr>
+                                <br/>
+                                <tr>
+                                    <td class="w-half">
+                                        <span class="uppercase">Location / Place</span>
+                                    </td>
+                                    <td class="w-half uppercase">
+                                        : <span style="padding-left: 3%">{{$record->meterDetail->location??null}}</span>
+                                    </td>
+                                </tr>
+                                <br/>
+                                <tr>
+                                    <td class="w-half">
+                                        <span class="uppercase">Model Of Meter</span>
+                                    </td>
+                                    <td class="w-half uppercase">
+                                        : <span style="padding-left: 3%">{{$record->meterDetail->model??null}}</span>
+                                    </td>
+                                </tr>
+                                <br/>
+                                <tr>
+                                    <td class="w-half">
+                                        <span class="uppercase">Serial Number</span>
+                                    </td>
+                                    <td class="w-half uppercase">
+                                        : <span
+                                            style="padding-left: 3%">{{$record->meterDetail->serial_number??null}}</span>
+                                    </td>
+                                </tr>
+                                <br/>
+                                <tr>
+                                    <td class="w-half">
+                                        <span class="uppercase">FLow Rates</span>
+                                    </td>
+                                    <td class="w-half uppercase">
+                                        : <span
+                                            style="padding-left: 3%">{{$record->meterDetail->flow_rate??null}}</span>
+                                    </td>
+                                </tr>
+                                <br/>
+                                <tr>
+                                    <td class="w-half">
+                                        <span class="uppercase">Meter Resolution</span>
+                                    </td>
+                                    <td class="w-half uppercase">
+                                        :<span
+                                            style="padding-left: 3%"> {{$record->meterDetail->meter_resolution??null}}</span>
+                                    </td>
+                                </tr>
+                                <br/>
+                                <tr>
+                                    <td class="w-half">
+                                        <span class="uppercase">Product Used</span>
+                                    </td>
+                                    <td class="w-half uppercase">
+                                        : <span
+                                            style="padding-left: 3%">{{$record->calibration_product_used??null}}</span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td style="width: 35%">
+                            <div><h5 class="uppercase margin-top">Loading and Offloading meter</h5></div>
+                            <table class="w-full" style="border: black solid 2px;  padding: 2%;padding-right: 0">
+                                <tr>
+                                    <td colspan="2"><h5 class="uppercase margin-top" style="padding-left: 20%"><u>Totaliser Readings</u></h5></td>
+                                </tr>
+                                <tr>
+                                    <td class="w-half">TOT. FINISH</td>
+                                    <td class="w-half">:{{$record->totaliserReading->tot_finish??null}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="w-half">TOT. START</td>
+                                    <td class="w-half">:{{$record->totaliserReading->tot_start??null}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="w-half">PROD. DRAWN</td>
+                                    <td class="w-half">:{{$record->totaliserReading->prod_drawn??null}} ltrs</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                </table>
+            </td>
+
+
             <td class="w-half">
                 <table class="w-full">
                     <tr>
-                        <td class="w-three-quarters"><span class="uppercase">Pump Calibration Certificate No.</span></td>
-                        <td class="w-half"> : {{ $record->certificate->certificate_number??null }}</td>
-                    </tr>
-                    <tr>
-                        <td class="w-half"><span class="uppercase">Pump Owner</span></td>
-                        <td class="w-half">: {{ $record->pumpOwner->company_name??null }}</td>
-                    </tr>
-                    <tr>
-                        <td class="w-half"><span class="uppercase">Pump type</span></td>
-                        <td class="w-half">: {{ $record->pumpDetail->pumpType->pump_type??null }}</td>
-                    </tr>
-                    <tr>
-                        <td class="w-half"><span class="uppercase">Location / Place</span></td>
-                        <td class="w-half">: {{ $record->pumpDetail->location??null }}</td>
-                    </tr>
-                    <tr>
-                        <td class="w-half"><span class="uppercase">Model</span></td>
-                        <td class="w-half">: {{ $record->pumpDetail->model??null }}</td>
-                    </tr>
-                    <tr>
-                        <td class="w-half"><span class="uppercase">Serial Number</span></td>
-                        <td class="w-half">: {{ $record->pumpDetail->serial_number??null }}</td>
-                    </tr>
-                    <tr>
-                        <td class="w-half"><span class="uppercase">Flow Rate</span></td>
-                        <td class="w-half">: {{ $record->pumpDetail->flow_rate??null }}</td>
-                    </tr>
-                    <tr>
-                        <td class="w-half"><span class="uppercase">Product Used For Calibration</span></td>
-                        <td class="w-half">: {{ $record->calibration_product_used??null }}</td>
+                        <td class="w-quarter">
+                        </td>
+                        <td class="w-half">
+                            <h4 class="uppercase"><u>Calibration Method Used</u></h4>
+                            <h4 class="uppercase"><u>{{$record->calibration_method??null}}</u> - <u>master meter</u>
+                            </h4>
+                        </td>
+                        <td class="w-quarter">
+                            <img src="data:image/png;base64,{{ $qrcode}}" alt="QR Code" height="150" width="150">
+                        </td>
                     </tr>
                 </table>
-            </td>
-            <td class="w-quarter">
-                <img src="data:image/png;base64,{{ $qrcode}}" alt="QR Code" height="100" width="130">
-                <div><h4 class="uppercase"><u>Totaliser Readings</u></h4></div>
-                <table class="w-full">
+
+                <table class="w-full margin-top">
                     <tr>
-                        <td class="w-half">TOT. FINISH</td>
-                        <td class="w-half">: {{$record->totaliserReading->tot_finish??null}}</td>
-                    </tr>
-                    <tr>
-                        <td class="w-half">TOT. START</td>
-                        <td class="w-half">: {{$record->totaliserReading->tot_start??null}}</td>
-                    </tr>
-                    <tr>
-                        <td class="w-half">PROD. DRAWN</td>
-                        <td class="w-half">: {{$record->totaliserReading->prod_drawn??null}}</td>
+                        <td class="w-quarter">
+                        </td>
+                        <td class="w-half">
+                            <h4 class="uppercase"><u>Master Meter Details</u></h4>
+                        </td>
+                        <td class="w-quarter"></td>
                     </tr>
                 </table>
+
+                <table class="w-full margin-top" style="padding-left: 5%">
+                    <tr>
+                        <td class="w-half uppercase">Type</td>
+                        <td class="w-half uppercase">:<span
+                                style="padding-left: 3%">{{$record->masterMeter->meterType->meter_type??null}}</span>
+                        </td>
+                    </tr>
+                    <br/>
+                    <tr>
+                        <td class="w-half uppercase">Model</td>
+                        <td class="w-half uppercase">:<span
+                                style="padding-left: 3%">{{$record->masterMeter->model??null}}</span></td>
+                    </tr>
+                    <br/>
+                    <tr>
+                        <td class="w-half uppercase">Flow Rates</td>
+                        <td class="w-half uppercase">:<span
+                                style="padding-left: 3%">{{$record->masterMeter->flow_rate??null}}</span></td>
+                    </tr>
+                    <br/>
+                    <tr>
+                        <td class="w-half uppercase">Serial Number</td>
+                        <td class="w-half uppercase">:<span
+                                style="padding-left: 3%">{{$record->masterMeter->serial_number??null}}</span></td>
+                    </tr>
+                </table>
+
+                <div class="margin-top" style="padding-left: 10%">
+
+                    <table class="w-full">
+                        <tr>
+                            <td class="w-half"></td>
+                            <td>
+                                <table style="border: black solid 2px; padding: 2%; padding-right: 0;">
+                                    <tr>
+                                        <td colspan="2"><h4 class="uppercase margin-top" style="padding-left: 20%"><u>Totaliser Readings</u></h4></td>
+                                    </tr>
+                                    <br/>
+                                    <tr>
+                                        <td class="w-half">TOT. FINISH :<span
+                                                style="padding-left: 3%">{{$record->masterMeter->totaliserReading->tot_finish??null}}</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-half">TOT. START :<span
+                                                style="padding-left: 3%">{{$record->masterMeter->totaliserReading->tot_start??null}}</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-half">PROD. DRAWN :<span style="padding-left: 3%">{{$record->masterMeter->totaliserReading->prod_drawn??null}} ltrs</span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </td>
         </tr>
     </table>
-</div>
-
-<div class="margin-top">
-    <h4 class="uppercase"><u>Calibration Method Used</u></h4>
-    <p>{{$record->calibration_method??null}}</p>
-</div>
-<div class="margin-top">
-    <h4 class="uppercase"><u>Test Measure Details</u></h4>
-    <table class="w-full">
-        <tr>
-            <td class="w-quarter"><strong class="uppercase">Standard</strong></td>
-            <td class="w-quarter"><strong class="uppercase">Serial Number</strong></td>
-            <td class="w-quarter"><strong class="uppercase">Material of Construction</strong></td>
-        </tr>
-        <tr>
-            <td class="w-quarter">{{$record->standard??null}}</td>
-            <td class="w-quarter">{{$record->serial_number??null}}</td>
-            <td class="w-quarter">{{$record->material_of_construction??null}}</td>
-        </tr>
-    </table>
-</div>
-
-<div class="margin-top">
-    <h4 class="uppercase">20000 & 5000 M/Litre Assized Test Measure</h4>
 </div>
 
 <div class="margin-top" style="bottom: 50px">
     <table class="table">
         <tr>
-            <th class="tr">Corrected Volume</th>
-            <th class="tr">Pump Under Test Volume</th>
+            <th class="non-tr"></th>
+            <th class="uppercase tr" colspan="4">Master Meter</th>
+            <th class="uppercase tr">Line Meter</th>
+            <th></th>
+        </tr>
+        <tr>
+            <th class="tr">Run No</th>
+            <th class="tr">Flow Rate (LPM)</th>
+            <th class="tr">Volume: IV (Ltrs)</th>
+            <th class="tr">Temp</th>
+            <th class="tr">Pressure (Bars)</th>
+            <th class="tr">Volume (Ltrs)</th>
             <th class="tr">Difference in Litres</th>
-            <th class="tr">Corrective Action Taken</th>
+            <th class="tr">Meter Factor</th>
+            <th class="tr">Percentage Error</th>
+            <th class="tr">Remarks</th>
         </tr>
         @if($record)
             @foreach($record->calibrationMeasureDetails as $item)
-                <tr class="items">
+                <tr class="items"  style="text-align: center">
                     <td class="tr">
-                        {{ $loop->index+1 .') '.$item->corrected_volume }}
+                        {{ $item->run_number }}
                     </td>
                     <td class="tr">
-                        {{ $item->pump_under_test_volume }}
+                        {{ $item->master_meter_flow_rate }}
+                    </td>
+                    <td class="tr">
+                        {{ $item->master_meter_volume }}
+                    </td>
+                    <td class="tr">
+                        {{ $item->master_meter_temperature }}
+                    </td>
+                    <td class="tr">
+                        {{ $item->master_meter_pressure }}
+                    </td>
+                    <td class="tr">
+                        {{ $item->line_meter_volume }}
                     </td>
                     <td class="tr">
                         {{ $item->difference }}
                     </td>
                     <td class="tr">
-                        {{ $item->corrective_action }}
+                        {{ $item->meter_factor }}
+                    </td>
+                    <td class="tr">
+                        {{ $item->percentage_error }}
+                    </td>
+                    <td class="tr uppercase">
+                        {{ $item->remarks }}
                     </td>
                 </tr>
             @endforeach
@@ -161,16 +298,61 @@
 </div>
 
 <div class="margin-top">
-    <h4><u>PUMP PASSED CALIBRATION AND ASSIZE TEST.</u></h4>
+    <h4><u>METER PASSED CALIBRATION AND ASSIZE TESTS.</u></h4>
 </div>
 
-<p>CALIBRATOR SECURED USING SEALING PLIERS No.: {{$record->sealing_pliers_number??null}}</p>
+<p>CALIBRATOR SECURED WITH SEALING PLIERS No. <span style="padding-left: 14.3%;padding-right: 2%">:</span>{{$record->sealing_pliers_number??null}}</p>
 
-<p>AVERAGE PUMP % ERROR BEFORE ANY ADJUSTMENTS: {{$record->avg_pump_percentage_error_before_adjustments??null}}</p>
+<p>REGISTER SECURED WITH SEALING PLIERS No. <span style="padding-left: 16%;padding-right: 2%">:</span>{{$record->sealing_pliers_number??null}}</p>
 
-<p>AVERAGE PUMP % ERROR FOR THE LAST FIVE READINGS BEFORE
-    ASSIZE: {{$record->avg_pump_percentage_error_before_assize??null}}</p>
+<p>AVERAGE METER % ERROR BEFORE ANY ADJUSTMENTS <span style="padding-left: 11%;padding-right: 1.5%">=</span> {{$record->avg_meter_percentage_error_before_adjustments??null}}<span style="padding-left: 3%">%</span></p>
 
+<p>AVERAGE METER % ERROR FOR THE LAST FOUR READINGS <span style="padding-left: 9.5%;padding-right: 1.5%">=</span> {{$record->avg_meter_percentage_error_for_the_last_four_readings??null}} <span style="padding-left: 2%">%</span></p>
+<p>AVERAGE METER FACTOR FOR THE LAST FOUR READINGS <span style="padding-left: 10%;padding-right: 1.5%">=</span> {{$record->avg_meter_factor_for_the_last_four_readings??null}}</p>
+
+<div class="margin-top">
+    <h4><u>PLEASE TAKE NOTE OF THE FOLLOWING VERY IMPORTANT INFORMATION</u></h4>
+    <table class="margin-top">
+        <tr>
+            <td class="">
+                A) <span style="padding-left: 5%">METER FACTOR</span> <span style="padding-left: 25%">=</span>
+            </td>
+            <td class="">
+                <u><span>CORRECTED VOLUME</span></u>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>METER UNDER TEST VOLUME</td>
+            <td></td>
+        </tr>
+        <br/>
+        <tr class="margin-top">
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="">
+                B)<span style="padding-left: 5%"> % ERROR</span> <span  style="padding-left: 39%">=</span>
+            </td>
+            <td class="">
+                <u>CORRECTED VOLUME - METER UNDER TEST VOLUME</u> <span>X</span> 100
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><span>CORRECTED VOLUME</span>
+            </td>
+            <td></td>
+        </tr>
+    </table>
+</div>
+<div class="margin-top">
+    <p>IF METER FACTOR EXCEEDS 1 THEN % ERROR IS POSITIVE THUS THE METER WILL BE OVER DELIVERING</p>
+</div>
 <div class="margin-top">
     <h4><u>TRACEABILITY OF MEASUREMENT .</u></h4>
     <p>THE ACCURACIES OF ALL MEASUREMENTS ARE TRACEABLE TO NATIONAL STANDARDS
@@ -178,34 +360,35 @@
         1989, THROUGH VERIFICATION CERTIFICATE NUMBER 0010.
     </p>
 </div>
+
 <div class="margin-top">
-    <h4><u>IN ACCORDANCE WITH THE GOVERNMENT TRADE MEASURES (ASSIZE) REGULATIONS THIS
-            PUMP {{$record->pumpDetail->serial_number??null}} USED FOR TRADE PURPOSES.</u></h4>
+    <p class="uppercase">METER WILL BE DUE FOR RE-CALIBRATION AFTER SIX
+        MONTHS, {{\Carbon\Carbon::parse($record->date_of_next_calibration??null)->format('d F Y')}} PROVIDED THERE IS NO
+        DISTURBANCE, REPAIR WORK DONE ON IT OR DRIFTOUT OF CALIBRATION.</p>
 </div>
 <div class="margin-top">
-    <h4><u>WE RECOMMEND PUMP CALIBRATION TO BE DONE EVERY SIX MONTHS.</u></h4>
+    <h4><u>HOWEVER, WE RECOMMEND RE-CALIBRATION TO BE DONE EVERY SIX MONTHS.</u></h4>
 </div>
 <div class="margin-top">
     <table class="w-full" style="border-spacing: 0 15px;">
         <tr>
             <td class="w-half">DATE OF METER CALIBRATION</td>
-            <td>:&nbsp; &nbsp;  {{\Carbon\Carbon::parse($record->calibration_date??null)->format('d   F   Y')}}</td>
+            <td><p class="uppercase">:&nbsp;
+                    &nbsp; {{\Carbon\Carbon::parse($record->calibration_date??null)->format('d   F   Y')}}</p></td>
         </tr>
         <tr>
             <td class="w-half">DATE OF NEXT RE-CALIBRATION</td>
-            <td>:&nbsp; &nbsp;  {{\Carbon\Carbon::parse($record->next_date_of_calibration??null)->format('d   F   Y')}}</td>
+            <td><p class="uppercase">:&nbsp;
+                    &nbsp; {{\Carbon\Carbon::parse($record->next_date_of_calibration??null)->format('d   F   Y')}}</p>
+            </td>
         </tr>
         <tr>
             <td class="w-half">CALIBRATED BY TECHNICIAN</td>
-            <td>:&nbsp; &nbsp;{{$record->calibrated_by??null}}</td>
+            <td><p class="uppercase"> :&nbsp; &nbsp;{{$record->calibrated_by??null}}</p></td>
         </tr>
         <tr>
             <td class="w-half">ASSISTED BY</td>
-            <td>:&nbsp; &nbsp;{{$record->assisted_by??null}}</td>
-        </tr>
-        <tr>
-            <td class="w-half">TRADE MEASURES INSPECTOR</td>
-            <td>:&nbsp; &nbsp;{{$record->trade_measures_inspector??null}}</td>
+            <td><p class="uppercase">:&nbsp; &nbsp;{{$record->assisted_by??null}}</p></td>
         </tr>
         <tr>
             <td class="w-half">AUTHORIZED SIGNATURE</td>
