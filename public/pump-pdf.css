@@ -3,13 +3,13 @@
 }
 
 body {
-    /*border: 1px gray double;*/
-    padding: 15px;
+    border: 1px gray double;
+    padding: 5px;
 }
-.repeat {
-    border: 8px solid skyblue;
-    border-image: url(https://c.pxhere.com/images/c4/56/a9d6dfc04d5ad4b03669dcc2523c-1617980.jpg!d) 50 repeat;
-}
+/*.repeat {*/
+/*    border: 8px solid skyblue;*/
+/*    border-image: url(https://c.pxhere.com/images/c4/56/a9d6dfc04d5ad4b03669dcc2523c-1617980.jpg!d) 50 repeat;*/
+/*}*/
 /*.page-number:before {*/
 /*    content: "Page " counter(page);*/
 /*}*/

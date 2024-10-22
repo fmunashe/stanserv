@@ -106,6 +106,14 @@ class PumpCalibrationResource extends Resource
                                 Forms\Components\TextInput::make('description')
                                     ->maxLength(255),
                             ]),
+                        Forms\Components\Select::make('mode')
+                            ->searchable()
+                            ->preload()
+                            ->required()
+                            ->options([
+                                'Commercial'=>'Commercial',
+                                'Retail'=>'Retail'
+                            ]),
                         Forms\Components\TextInput::make('location')
                             ->required()
                             ->maxLength(255),

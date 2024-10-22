@@ -66,7 +66,7 @@
             <td class="w-quarter">
                 <table>
                     <tr style="text-align: right">
-                        <td> <img src="data:image/png;base64,{{ $qrcode}}" alt="QR Code" height="100" width="130"></td>
+                        <td><img src="data:image/png;base64,{{ $qrcode}}" alt="QR Code" height="100" width="130"></td>
                     </tr>
                 </table>
                 <div><h4 class="uppercase" style="text-align: right"><u>Totaliser Readings</u></h4></div>
@@ -167,8 +167,17 @@
     </p>
 </div>
 <div class="margin-top">
-    <h4><u>IN ACCORDANCE WITH THE GOVERNMENT TRADE MEASURES (ASSIZE) REGULATIONS THIS
-            PUMP {{$record->pumpDetail->serial_number??null}} USED FOR TRADE PURPOSES.</u></h4>
+    <h4>
+        <u>
+            @if($record->pumpDetail->mode =="Commercial")
+                IN ACCORDANCE WITH THE GOVERNMENT TRADE MEASURES (ASSIZE) REGULATIONS THIS
+                PUMP {{$record->pumpDetail->serial_number??null}} MUST NOT BE USED FOR TRADE PURPOSES.
+            @elseif($record->pumpDetail->mode =="Retail")
+                IN ACCORDANCE WITH THE GOVERNMENT TRADE MEASURES (ASSIZE) REGULATIONS THIS
+                PUMP {{$record->pumpDetail->serial_number??null}} MUST CAN BE USED FOR TRADE PURPOSES.
+            @endif
+        </u>
+    </h4>
 </div>
 <div class="margin-top">
     <h4><u>WE RECOMMEND PUMP CALIBRATION TO BE DONE EVERY SIX MONTHS.</u></h4>

@@ -35,6 +35,14 @@ class PumpDetailResource extends Resource
                     ->searchable()
                     ->preload()
                     ->required(),
+                Forms\Components\Select::make('mode')
+                    ->searchable()
+                    ->preload()
+                    ->required()
+                    ->options([
+                        'Commercial' => 'Commercial',
+                        'Retail' => 'Retail'
+                    ]),
                 Forms\Components\TextInput::make('location')
                     ->required()
                     ->maxLength(255),
@@ -65,6 +73,8 @@ class PumpDetailResource extends Resource
                 Tables\Columns\TextColumn::make('location')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('model')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('mode')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('serial_number')
                     ->searchable(),
