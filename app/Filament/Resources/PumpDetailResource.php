@@ -20,8 +20,6 @@ class PumpDetailResource extends Resource
 {
     protected static ?string $model = PumpDetail::class;
 
-//    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
     public static function form(Form $form): Form
     {
         return $form
@@ -48,6 +46,7 @@ class PumpDetailResource extends Resource
                     ->unique('pump_details', 'serial_number', ignoreRecord: true)
                     ->maxLength(255),
                 Forms\Components\TextInput::make('flow_rate')
+                    ->label('Flow Rate LPM (Litre Per Minute)')
                     ->required()
                     ->maxLength(255),
             ]);

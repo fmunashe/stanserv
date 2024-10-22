@@ -46,6 +46,7 @@ class CertificateRelationManager extends RelationManager
 
             ])
             ->actions([
+                Tables\Actions\EditAction::make(),
                 Tables\Actions\ViewAction::make(),
 
             ])

@@ -35,7 +35,7 @@ class PumpCalibrationResource extends Resource
                     ->required()
                     ->relationship('pumpOwner', 'company_name')
                     ->searchable()
-                    ->label('Pump Owner')
+                    ->label('Client')
                     ->preload()
                     ->optionsLimit(5)
                     ->live()

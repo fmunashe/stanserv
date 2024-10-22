@@ -6,9 +6,9 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Pump Calibration Certificate</title>
-    <link rel="stylesheet" href="{{ public_path('pdf.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ public_path('pump-pdf.css') }}" type="text/css">
 </head>
-<body>
+<body class="repeat">
 <header>
 
 </header>
@@ -16,10 +16,10 @@
 <table class="w-full">
     <tr>
         <td class="w-half">
-{{--            <img src="{{ public_path('images/logo.png') }}" alt="saz"/>--}}
+            {{--            <img src="{{ public_path('images/logo.png') }}" alt="saz"/>--}}
         </td>
         <td class="w-half">
-{{--            <h4>Pump Calibration Certificate No. : {{ $record->certificate->certificate_number??null }}</h4>--}}
+            {{--            <h4>Pump Calibration Certificate No. : {{ $record->certificate->certificate_number??null }}</h4>--}}
         </td>
     </tr>
 </table>
@@ -30,11 +30,11 @@
             <td class="w-half">
                 <table class="w-full">
                     <tr>
-                        <td class="w-three-quarters"><span class="uppercase">Pump Calibration Certificate No.</span></td>
+                        <td class="w-half"><span class="uppercase">Certificate No.</span></td>
                         <td class="w-half"> : {{ $record->certificate->certificate_number??null }}</td>
                     </tr>
                     <tr>
-                        <td class="w-half"><span class="uppercase">Pump Owner</span></td>
+                        <td class="w-half"><span class="uppercase">Client</span></td>
                         <td class="w-half">: {{ $record->pumpOwner->company_name??null }}</td>
                     </tr>
                     <tr>
@@ -54,30 +54,37 @@
                         <td class="w-half">: {{ $record->pumpDetail->serial_number??null }}</td>
                     </tr>
                     <tr>
-                        <td class="w-half"><span class="uppercase">Flow Rate</span></td>
+                        <td class="w-half"><span class="uppercase">Flow Rate (LPM)</span></td>
                         <td class="w-half">: {{ $record->pumpDetail->flow_rate??null }}</td>
                     </tr>
                     <tr>
-                        <td class="w-half"><span class="uppercase">Product Used For Calibration</span></td>
+                        <td class="w-half"><span class="uppercase">Product Used</span></td>
                         <td class="w-half">: {{ $record->calibration_product_used??null }}</td>
                     </tr>
                 </table>
             </td>
             <td class="w-quarter">
-                <img src="data:image/png;base64,{{ $qrcode}}" alt="QR Code" height="100" width="130">
-                <div><h4 class="uppercase"><u>Totaliser Readings</u></h4></div>
-                <table class="w-full">
+                <table>
+                    <tr style="text-align: right">
+                        <td> <img src="data:image/png;base64,{{ $qrcode}}" alt="QR Code" height="100" width="130"></td>
+                    </tr>
+                </table>
+                <div><h4 class="uppercase" style="text-align: right"><u>Totaliser Readings</u></h4></div>
+                <table class="w-full" style="text-align: right">
                     <tr>
                         <td class="w-half">TOT. FINISH</td>
-                        <td class="w-half">: {{$record->totaliserReading->tot_finish??null}}</td>
+                        <td class="w-quarter"><span>:</span></td>
+                        <td class="w-quarter"> {{$record->totaliserReading->tot_finish??null}}</td>
                     </tr>
                     <tr>
                         <td class="w-half">TOT. START</td>
-                        <td class="w-half">: {{$record->totaliserReading->tot_start??null}}</td>
+                        <td class="w-quarter"><span>:</span></td>
+                        <td class="w-quarter">{{$record->totaliserReading->tot_start??null}}</td>
                     </tr>
                     <tr>
                         <td class="w-half">PROD. DRAWN</td>
-                        <td class="w-half">: {{$record->totaliserReading->prod_drawn??null}}</td>
+                        <td class="w-quarter"><span>:</span></td>
+                        <td class="w-quarter"> {{$record->totaliserReading->prod_drawn??null}}</td>
                     </tr>
                 </table>
             </td>
@@ -92,7 +99,7 @@
 <div class="margin-top">
     <h4 class="uppercase"><u>Test Measure Details</u></h4>
     <table class="w-full">
-        <tr>
+        <tr style="font-size: 14px">
             <td class="w-quarter"><strong class="uppercase">Standard</strong></td>
             <td class="w-quarter"><strong class="uppercase">Serial Number</strong></td>
             <td class="w-quarter"><strong class="uppercase">Material of Construction</strong></td>
@@ -112,6 +119,7 @@
 <div class="margin-top" style="bottom: 50px">
     <table class="table">
         <tr>
+            <th class="tr">#</th>
             <th class="tr">Corrected Volume</th>
             <th class="tr">Pump Under Test Volume</th>
             <th class="tr">Difference in Litres</th>
@@ -119,9 +127,11 @@
         </tr>
         @if($record)
             @foreach($record->calibrationMeasureDetails as $item)
-                <tr class="items">
+                <tr class="items" style="text-align: center">
                     <td class="tr">
-                        {{ $loop->index+1 .') '.$item->corrected_volume }}
+                        {{ $loop->index+1 }}
+                    </td>
+                    <td class="tr">{{$item->corrected_volume }}
                     </td>
                     <td class="tr">
                         {{ $item->pump_under_test_volume }}
@@ -189,9 +199,11 @@
             <td class="w-half">AUTHORIZED SIGNATURE</td>
             <td><img src="{{ $record->signature}}" alt="Signature" height="50" width="400"></td>
         </tr>
+    </table>
+    <table class="w-full" style="border-spacing: 0 15px;">
         <tr>
-            <td class="w-half"></td>
-            <td>FOR, AND ON BEHALF OF STANSERV GENUINE SERVICES (Pvt) Ltd</td>
+            <td class="w-quarter"></td>
+            <td class="w-three-quarters">FOR, AND ON BEHALF OF STANSERV GENUINE SERVICES (Pvt) Ltd</td>
         </tr>
     </table>
 </div>

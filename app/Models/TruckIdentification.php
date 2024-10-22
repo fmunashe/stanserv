@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class TruckIdentification extends Model
@@ -34,5 +35,10 @@ class TruckIdentification extends Model
     public function truckOwnerDetail(): BelongsTo
     {
         return $this->belongsTo(TruckOwnerDetail::class);
+    }
+
+    public function calibrations(): HasMany
+    {
+        return $this->hasMany(TruckCalibration::class);
     }
 }

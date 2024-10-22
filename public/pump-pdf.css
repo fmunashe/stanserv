@@ -1,0 +1,98 @@
+@page {
+    margin: 110px 40px 110px;
+}
+
+body {
+    /*border: 1px gray double;*/
+    padding: 15px;
+}
+.repeat {
+    border: 8px solid skyblue;
+    border-image: url(https://c.pxhere.com/images/c4/56/a9d6dfc04d5ad4b03669dcc2523c-1617980.jpg!d) 50 repeat;
+}
+/*.page-number:before {*/
+/*    content: "Page " counter(page);*/
+/*}*/
+h4 {
+    margin: 0;
+}
+
+.w-full {
+    width: 100%;
+}
+
+.w-half {
+    width: 50%;
+}
+
+.w-quarter {
+    width: 25%;
+}
+
+.w-three-quarters {
+    width: 75%;
+}
+
+.margin-top {
+    margin-top: 1.25rem;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+}
+
+table {
+    width: 100%;
+    border-spacing: 0;
+}
+
+.table {
+    width: 100%;
+    border: 0.5px gray dotted;
+}
+
+.tr {
+    border: 0.5px gray dotted;
+}
+.non-tr {
+    border: 0;
+}
+
+table.products {
+    font-size: 0.875rem;
+}
+
+table.products tr {
+    background-color: rgb(96 165 250);
+}
+
+table.products th {
+    color: #ffffff;
+    padding: 0.5rem;
+}
+
+table tr.items {
+    /*background-color: rgb(241 245 249);*/
+}
+
+table tr.items td {
+    padding: 0.5rem;
+}
+
+.total {
+    text-align: right;
+    margin-top: 1rem;
+    font-size: 0.875rem;
+}
+
+.red {
+    color: red;
+}
+
+.uppercase {
+    text-transform: uppercase
+}

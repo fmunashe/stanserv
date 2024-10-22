@@ -18,9 +18,6 @@ class CertificateRelationManager extends RelationManager
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('pump_calibration_id')
-                    ->required()
-                    ->maxLength(255),
                 Forms\Components\TextInput::make('certificate_number')
                     ->required()
                     ->maxLength(255),
@@ -46,6 +43,7 @@ class CertificateRelationManager extends RelationManager
 //                Tables\Actions\CreateAction::make(),
             ])
             ->actions([
+                Tables\Actions\EditAction::make(),
                 Tables\Actions\ViewAction::make()
             ])
             ->bulkActions([

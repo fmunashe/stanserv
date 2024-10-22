@@ -79,9 +79,9 @@ class PumpCalibrationController extends Controller
         $canvas = $pdf->getDomPDF()->getCanvas();
         $height = $canvas->get_height();
         $width = $canvas->get_width();
-        $canvas->set_opacity(0.2, "Multiply");
-        $canvas->page_text($width / 3, $height / 2, 'PASSED', null,
-            70, array(0, 0, 0), 2, 2, -30);
+        $canvas->set_opacity(1.0, "Multiply");
+//        $canvas->page_text($width / 3, $height / 2, 'PASSED', null,
+//            70, array(0, 0, 0), 2, 2, -30);
         $canvas->page_text($width / 1.15, $height / 1.05, "Page {PAGE_NUM} of {PAGE_COUNT}", null, 12);
         return $pdf->stream($record->pumpOwner->company_name . 'PumpCalibrationCertificate' . '.pdf');
     }
