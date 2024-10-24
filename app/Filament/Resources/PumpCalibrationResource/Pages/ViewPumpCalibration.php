@@ -69,6 +69,7 @@ class ViewPumpCalibration extends ViewRecord
                 ->form([
                     Select::make('averageErrorBeforeAdjustments')
                         ->label('Average Error Before Adjustments')
+                        ->required()
                         ->searchable()
                         ->preload()
                         ->multiple()
@@ -76,6 +77,7 @@ class ViewPumpCalibration extends ViewRecord
 
                     Select::make('averageErrorForTheLast')
                         ->label('Average Error For The Last')
+                        ->required()
                         ->searchable()
                         ->preload()
                         ->multiple()
