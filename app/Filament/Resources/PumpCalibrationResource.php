@@ -111,8 +111,8 @@ class PumpCalibrationResource extends Resource
                             ->preload()
                             ->required()
                             ->options([
-                                'Commercial'=>'Commercial',
-                                'Retail'=>'Retail'
+                                'Commercial' => 'Commercial',
+                                'Retail' => 'Retail'
                             ]),
                         Forms\Components\TextInput::make('location')
                             ->required()
@@ -130,10 +130,18 @@ class PumpCalibrationResource extends Resource
                     ]),
                 Forms\Components\DatePicker::make('calibration_date')
                     ->required()
-                    ->default(Carbon::now()),
+                    ->default(Carbon::now())
+                    ->live()
+                    ->afterStateUpdated(function ($state, callable $set) {
+                        $date = Carbon::parse($state)->addMonths(6)->format('Y-m-d');
+                        $set('next_date_of_calibration', $date);
+                    })
+                    ->live(),
                 Forms\Components\DatePicker::make('next_date_of_calibration')
                     ->required()
-                    ->default(Carbon::now()->addMonths(6)),
+                    ->default(Carbon::now()->addMonths(6))
+                    ->live()
+                    ->readOnly(),
                 Forms\Components\TextInput::make('calibration_product_used')
                     ->required(),
                 Forms\Components\TextInput::make('calibration_method')
@@ -168,6 +176,10 @@ class PumpCalibrationResource extends Resource
                     ->label('Trade Measures Inspector')
                     ->maxLength(255)
                     ->required(),
+                Forms\Components\Textarea::make('average_pump_percentage_error_wording')
+                    ->label('Average Pump Percentage Error Wording')
+                    ->required()
+                    ->columnSpanFull(),
                 SignaturePad::make('signature')
                     ->label(__('Authorised Signature'))
                     ->dotSize(2.0)

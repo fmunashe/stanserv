@@ -37,8 +37,8 @@ class StanservPanelProvider extends PanelProvider
             ->brandName('Stanserv Genuine Services')
             ->defaultThemeMode(ThemeMode::Light)
             ->colors([
-//                'primary' => Color::Teal,
-                'primary' => Color::rgb('rgb(45,53,139)'),
+                'primary' => Color::Teal,
+//                'primary' => Color::rgb('rgb(45,53,139)'),
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
@@ -59,9 +59,13 @@ class StanservPanelProvider extends PanelProvider
                 SubstituteBindings::class,
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
+//                \Hasnayeen\Themes\Http\Middleware\SetTheme::class
             ])
             ->authMiddleware([
                 Authenticate::class,
+            ])
+            ->plugins([
+//                \Hasnayeen\Themes\ThemesPlugin::make()
             ])
             ->sidebarFullyCollapsibleOnDesktop()
             ->brandLogo(asset('images/logo.png'))
@@ -71,7 +75,7 @@ class StanservPanelProvider extends PanelProvider
             ->maxContentWidth(MaxWidth::Full)
             ->navigationGroups([
                 NavigationGroup::make()
-                    ->label('User Management')
+                    ->label('Users')
                     ->icon('heroicon-o-user-group'),
                 NavigationGroup::make()
                     ->label('Pumps')
@@ -80,7 +84,7 @@ class StanservPanelProvider extends PanelProvider
                     ->label('Meters')
                     ->icon('heroicon-o-signal'),
                 NavigationGroup::make()
-                    ->label('Truck Details')
+                    ->label('Trucks')
                     ->icon('heroicon-o-truck'),
                 NavigationGroup::make()
                     ->label('Settings')

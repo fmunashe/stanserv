@@ -147,6 +147,6 @@ class TruckOwnerDetailResource extends Resource
 
     public static function getNavigationGroup(): ?string
     {
-        return 'Truck Details';
+        return 'Trucks';
     }
 }

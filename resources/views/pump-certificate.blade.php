@@ -8,7 +8,7 @@
     <title>Pump Calibration Certificate</title>
     <link rel="stylesheet" href="{{ public_path('pump-pdf.css') }}" type="text/css">
 </head>
-<body class="repeat">
+<body>
 <header>
 
 </header>
@@ -155,9 +155,8 @@
 <p>CALIBRATOR SECURED USING SEALING PLIERS No.: {{$record->sealing_pliers_number??null}}</p>
 
 <p>AVERAGE PUMP % ERROR BEFORE ANY ADJUSTMENTS: {{$record->avg_pump_percentage_error_before_adjustments??null}}</p>
-
-<p>AVERAGE PUMP % ERROR FOR THE LAST FIVE READINGS BEFORE
-    ASSIZE: {{$record->avg_pump_percentage_error_before_assize??null}}</p>
+<p class="uppercase">{{$record->average_pump_percentage_error_wording??null}}
+    : {{$record->avg_pump_percentage_error_before_assize??null}}</p>
 
 <div class="margin-top">
     <h4><u>TRACEABILITY OF MEASUREMENT .</u></h4>

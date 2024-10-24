@@ -3,9 +3,21 @@
 }
 
 body {
-    border: 1px gray double;
+    /*border: 1px gray double;*/
     padding: 5px;
 }
+
+.border-container {
+    background-image: url(images/test.jpg!d);
+    background-size: cover; /* Adjust based on your needs */
+    padding: 20px; /* Space between the content and the border */
+    display: inline-block; /* Keeps the background tight around the content */
+}
+.content {
+    background-color: white; /* Background for content area */
+    padding: 10px; /* Inner padding */
+}
+
 /*.repeat {*/
 /*    border: 8px solid skyblue;*/
 /*    border-image: url(https://c.pxhere.com/images/c4/56/a9d6dfc04d5ad4b03669dcc2523c-1617980.jpg!d) 50 repeat;*/
@@ -58,6 +70,7 @@ table {
 .tr {
     border: 0.5px gray dotted;
 }
+
 .non-tr {
     border: 0;
 }
