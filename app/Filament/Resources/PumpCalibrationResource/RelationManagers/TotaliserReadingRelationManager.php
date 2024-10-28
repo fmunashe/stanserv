@@ -24,11 +24,11 @@ class TotaliserReadingRelationManager extends RelationManager
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('tot_start')
-                    ->label('TOT START')
+                Forms\Components\TextInput::make('tot_finish')
+                    ->label('TOT FINISH')
                     ->required()
                     ->numeric()
-                    ->live()
+                    ->live(onBlur: true)
                     ->afterStateUpdated(function ($state, callable $get, callable $set) {
                         if ($get('tot_start')
                             && $get('tot_finish')
@@ -38,11 +38,11 @@ class TotaliserReadingRelationManager extends RelationManager
                             $set('prod_drawn', 0.00);
                         }
                     }),
-                Forms\Components\TextInput::make('tot_finish')
-                    ->label('TOT FINISH')
+                Forms\Components\TextInput::make('tot_start')
+                    ->label('TOT START')
                     ->required()
                     ->numeric()
-                    ->live()
+                    ->live(onBlur: true)
                     ->afterStateUpdated(function ($state, callable $get, callable $set) {
                         if ($get('tot_start')
                             && $get('tot_finish')

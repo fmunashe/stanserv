@@ -44,4 +44,14 @@ class PumpCalibration extends Model
     {
         return $this->hasOne(Certificate::class);
     }
+
+    public function calibrationProduct(): BelongsTo
+    {
+        return $this->belongsTo(CalibrationProduct::class);
+    }
+
+    public function calibrationStandards(): HasMany
+    {
+        return $this->hasMany(CalibrationStandard::class);
+    }
 }

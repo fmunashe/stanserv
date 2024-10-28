@@ -41,13 +41,13 @@ class PumpDetailResource extends Resource
                     ->required()
                     ->options([
                         'Commercial' => 'Commercial',
+                        'Commercial Trade' => 'Commercial Trade',
                         'Retail' => 'Retail'
                     ]),
                 Forms\Components\TextInput::make('location')
                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('model')
-                    ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('serial_number')
                     ->required()

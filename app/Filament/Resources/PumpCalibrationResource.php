@@ -24,8 +24,6 @@ class PumpCalibrationResource extends Resource
 {
     protected static ?string $model = PumpCalibration::class;
 
-//    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
     public static function form(Form $form): Form
     {
         return $form
@@ -46,7 +44,6 @@ class PumpCalibrationResource extends Resource
                         Forms\Components\TextInput::make('phone')
                             ->label('Company Phone')
                             ->tel()
-                            ->required()
                             ->maxLength(255),
                         Forms\Components\TextInput::make('email')
                             ->label('Company Email')
@@ -57,13 +54,11 @@ class PumpCalibrationResource extends Resource
                             ->maxLength(255),
                         Forms\Components\TextInput::make('contact_person_phone')
                             ->tel()
-                            ->required()
                             ->maxLength(255),
                         Forms\Components\TextInput::make('contact_person_email')
                             ->email()
                             ->maxLength(255),
                         Forms\Components\Textarea::make('address')
-                            ->required()
                             ->maxLength(255)
                             ->columnSpanFull(),
                     ]),
@@ -89,11 +84,13 @@ class PumpCalibrationResource extends Resource
                     ->live()
                     ->createOptionForm([
                         Forms\Components\Select::make('pump_owner_id')
+                            ->label('Client')
                             ->relationship('pumpOwner', 'company_name')
                             ->searchable()
                             ->preload()
                             ->optionsLimit(5)
-                            ->required(),
+                            ->required()
+                            ->live(),
                         Forms\Components\Select::make('pump_type_id')
                             ->relationship('pumpType', 'pump_type')
                             ->searchable()
@@ -112,6 +109,7 @@ class PumpCalibrationResource extends Resource
                             ->required()
                             ->options([
                                 'Commercial' => 'Commercial',
+                                'Commercial Trade' => 'Commercial Trade',
                                 'Retail' => 'Retail'
                             ]),
                         Forms\Components\TextInput::make('location')
@@ -142,31 +140,28 @@ class PumpCalibrationResource extends Resource
                     ->default(Carbon::now()->addMonths(6))
                     ->live()
                     ->readOnly(),
-                Forms\Components\TextInput::make('calibration_product_used')
-                    ->required(),
+                Forms\Components\Select::make('calibration_product_id')
+                    ->relationship('calibrationProduct', 'name')
+                    ->searchable()
+                    ->preload()
+                    ->required()
+                    ->createOptionForm([
+                        Forms\Components\TextInput::make('name')
+                            ->required()
+                            ->maxLength(255)
+                    ]),
                 Forms\Components\TextInput::make('calibration_method')
                     ->required(),
-                Forms\Components\TextInput::make('standard')
-                    ->required(),
-                Forms\Components\TextInput::make('serial_number')
-                    ->required()
-                    ->live(),
-                Forms\Components\TextInput::make('material_of_construction')
-                    ->required()
-                    ->maxLength(255)
-                    ->default('Stainless Steel'),
                 Forms\Components\TextInput::make('sealing_pliers_number')
                     ->label('Sealing Pliers Number')
                     ->maxLength(255)
                     ->required(),
                 Forms\Components\TextInput::make('avg_pump_percentage_error_before_adjustments')
                     ->label('Average Pump Percentage Error Before Any Adjustments')
-                    ->numeric()
-                    ->required(),
+                    ->numeric(),
                 Forms\Components\TextInput::make('avg_pump_percentage_error_before_assize')
                     ->label('Average Pump Percentage Error For The Last Five Readings Before Assize')
-                    ->numeric()
-                    ->required(),
+                    ->numeric(),
                 Forms\Components\TextInput::make('calibrated_by')
                     ->required()
                     ->default(Auth::user()->name),
@@ -286,6 +281,7 @@ class PumpCalibrationResource extends Resource
     public static function getRelations(): array
     {
         return [
+            RelationManagers\CalibrationStandardsRelationManager::class,
             RelationManagers\TotaliserReadingRelationManager::class,
             RelationManagers\CalibrationMeasureDetailsRelationManager::class,
             RelationManagers\CertificateRelationManager::class

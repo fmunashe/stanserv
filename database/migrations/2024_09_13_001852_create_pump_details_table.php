@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->foreignIdFor(PumpOwner::class)->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignIdFor(PumpType::class)->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('location');
-            $table->string('model');
+            $table->string('model')->nullable();
             $table->string('serial_number');
             $table->string('flow_rate');
             $table->timestamps();

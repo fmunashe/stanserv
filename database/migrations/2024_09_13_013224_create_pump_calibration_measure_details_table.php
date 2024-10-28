@@ -14,9 +14,9 @@ return new class extends Migration {
         Schema::create('pump_calibration_measure_details', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(PumpCalibration::class)->constrained()->cascadeOnUpdate()->cascadeOnDelete();
-            $table->decimal('pump_under_test_volume');
-            $table->decimal('corrected_volume');
-            $table->decimal('difference')->nullable()->default(0);
+            $table->decimal('pump_under_test_volume', 10, 4);
+            $table->decimal('corrected_volume', 10, 4);
+            $table->decimal('difference', 10, 4)->nullable()->default(0);
             $table->text('corrective_action')->nullable();
             $table->timestamps();
             $table->softDeletes();

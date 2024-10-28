@@ -12,7 +12,27 @@
 <header>
 
 </header>
-
+<footer>
+    <div class="margin-top">
+        <table class="w-full">
+            <tr>
+                <td style="width: 10%">
+                    <img src="{{public_path('/images/saz-logo2.png')}}" alt="SAZ" width="110" height="100"/>
+                </td>
+                <td style="width: 90%">
+                    <table class="w-full">
+                        <tr>
+                            <td style="width: 80%"><h6 class="red">ISO 45001: 2018 OH&S MANAGEMENT SYSTEM CERTIFIED</h6>
+                            </td>
+                            <td style="width: 50%"><h6 class="red">&copy; CERTIFICATE
+                                    NO. {{$record->certificate->certificate_number??null}}</h6></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+</footer>
 <table class="w-full">
     <tr>
         <td class="w-half">
@@ -59,7 +79,7 @@
                     </tr>
                     <tr>
                         <td class="w-half"><span class="uppercase">Product Used</span></td>
-                        <td class="w-half">: {{ $record->calibration_product_used??null }}</td>
+                        <td class="w-half">: {{ $record->calibrationProduct->name??null }}</td>
                     </tr>
                 </table>
             </td>
@@ -98,17 +118,19 @@
 </div>
 <div class="margin-top">
     <h4 class="uppercase"><u>Test Measure Details</u></h4>
-    <table class="w-full">
-        <tr style="font-size: 14px">
-            <td class="w-quarter"><strong class="uppercase">Standard</strong></td>
-            <td class="w-quarter"><strong class="uppercase">Serial Number</strong></td>
-            <td class="w-quarter"><strong class="uppercase">Material of Construction</strong></td>
-        </tr>
+    <table class="w-full table">
         <tr>
-            <td class="w-quarter">{{$record->standard??null}}</td>
-            <td class="w-quarter">{{$record->serial_number??null}}</td>
-            <td class="w-quarter">{{$record->material_of_construction??null}}</td>
+            <th class="tr">Standard</th>
+            <th class="tr">Serial Number</th>
+            <th class="tr">Material of Construction</th>
         </tr>
+        @foreach($record->calibrationStandards as $standard)
+            <tr class="items" style="text-align: center">
+                <td class="tr">{{$standard->standard??null}}</td>
+                <td class="tr">{{$standard->serial_number??null}}</td>
+                <td class="tr">{{$standard->material_of_construction??null}}</td>
+            </tr>
+        @endforeach
     </table>
 </div>
 
@@ -170,10 +192,14 @@
         <u>
             @if($record->pumpDetail->mode =="Commercial")
                 IN ACCORDANCE WITH THE GOVERNMENT TRADE MEASURES (ASSIZE) REGULATIONS THIS
-                PUMP {{$record->pumpDetail->serial_number??null}} MUST NOT BE USED FOR TRADE PURPOSES.
+                PUMP MUST NOT BE USED FOR TRADE PURPOSES.
+            @elseif($record->pumpDetail->mode =="Commercial Trade")
+                IN ACCORDANCE WITH THE GOVERNMENT TRADE MEASURES (ASSIZE) REGULATIONS THIS
+                PUMP CAN BE USED FOR TRADE PURPOSES.
+
             @elseif($record->pumpDetail->mode =="Retail")
                 IN ACCORDANCE WITH THE GOVERNMENT TRADE MEASURES (ASSIZE) REGULATIONS THIS
-                PUMP {{$record->pumpDetail->serial_number??null}} MUST CAN BE USED FOR TRADE PURPOSES.
+                PUMP CAN BE USED FOR TRADE PURPOSES.
             @endif
         </u>
     </h4>

@@ -21,6 +21,8 @@ class DatabaseSeeder extends Seeder
         $this->call(CompartmentSeeder::class);
         $this->call(VolumeSeeder::class);
         $this->call(MeterTypeSeeder::class);
-
+        $this->call(PumpTypeSeeder::class);
+        $this->call(PumpOwnerSeeder::class);
+        $this->call(CalibrationProductSeeder::class);
     }
 }

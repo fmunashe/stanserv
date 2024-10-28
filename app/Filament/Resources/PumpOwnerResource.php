@@ -20,8 +20,6 @@ class PumpOwnerResource extends Resource
 {
     protected static ?string $model = PumpOwner::class;
 
-//    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
     public static function form(Form $form): Form
     {
         return $form
@@ -33,24 +31,20 @@ class PumpOwnerResource extends Resource
                 Forms\Components\TextInput::make('phone')
                     ->label('Company Phone')
                     ->tel()
-                    ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('email')
                     ->label('Company Email')
                     ->email()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('contact_person')
-                    ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('contact_person_phone')
                     ->tel()
-                    ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('contact_person_email')
                     ->email()
                     ->maxLength(255),
                 Forms\Components\Textarea::make('address')
-                    ->required()
                     ->maxLength(255)
                     ->columnSpanFull(),
             ]);

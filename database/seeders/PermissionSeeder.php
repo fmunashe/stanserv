@@ -129,6 +129,17 @@ class PermissionSeeder extends Seeder
             ['name' => 'meter_calibration_certificate_show', 'description' => 'Can view a meter calibration certificate'],
             ['name' => 'meter_calibration_certificate_edit', 'description' => 'Can edit and update a meter calibration certificate'],
             ['name' => 'meter_calibration_certificate_delete', 'description' => 'Can delete a meter calibration certificate'],
+
+            ['name' => 'calibration_product_access', 'description' => 'Can access calibration products page'],
+            ['name' => 'calibration_product_create', 'description' => 'Can create new calibration product'],
+            ['name' => 'calibration_product_show', 'description' => 'Can view a calibration product'],
+            ['name' => 'calibration_product_edit', 'description' => 'Can edit and update a calibration product'],
+            ['name' => 'calibration_product_delete', 'description' => 'Can delete a calibration product'],
+            ['name' => 'calibration_standard_access', 'description' => 'Can access calibration standards page'],
+            ['name' => 'calibration_standard_create', 'description' => 'Can create new calibration standard'],
+            ['name' => 'calibration_standard_show', 'description' => 'Can view a calibration standard'],
+            ['name' => 'calibration_standard_edit', 'description' => 'Can edit and update a calibration standard'],
+            ['name' => 'calibration_standard_delete', 'description' => 'Can delete a calibration standard'],
         ];
         foreach ($permissions as $permission) {
             Permission::query()->firstOrCreate($permission, $permission);

@@ -24,7 +24,7 @@ class CalibrationMeasureDetailsRelationManager extends RelationManager
                 Forms\Components\TextInput::make('corrected_volume')
                     ->required()
                     ->numeric()
-                    ->live()
+                    ->live(onBlur: true)
                     ->afterStateUpdated(function ($state, callable $get, callable $set) {
                         if ($get('pump_under_test_volume')
                             && $get('corrected_volume')
@@ -37,7 +37,7 @@ class CalibrationMeasureDetailsRelationManager extends RelationManager
                 Forms\Components\TextInput::make('pump_under_test_volume')
                     ->required()
                     ->numeric()
-                    ->live()
+                    ->live(onBlur: true)
                     ->afterStateUpdated(function ($state, callable $get, callable $set) {
                         if ($get('pump_under_test_volume')
                             && $get('corrected_volume')
@@ -63,9 +63,11 @@ class CalibrationMeasureDetailsRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('id')
             ->columns([
-                Tables\Columns\TextColumn::make('pump_under_test_volume'),
+                Tables\Columns\TextColumn::make('id'),
                 Tables\Columns\TextColumn::make('corrected_volume'),
+                Tables\Columns\TextColumn::make('pump_under_test_volume'),
                 Tables\Columns\TextColumn::make('difference'),
+                Tables\Columns\TextColumn::make('percentage_error'),
                 Tables\Columns\TextColumn::make('corrective_action')
             ])
             ->filters([
@@ -73,7 +75,11 @@ class CalibrationMeasureDetailsRelationManager extends RelationManager
             ])
             ->headerActions([
                 Tables\Actions\CreateAction::make()
-                    ->modalWidth('5xl'),
+                    ->modalWidth('5xl')
+                    ->mutateFormDataUsing(function (array $data): array {
+                        $data['percentage_error'] = number_format((($data['corrected_volume'] - $data['pump_under_test_volume']) / ($data['corrected_volume'])) * 100, 3, '.', '');
+                        return $data;
+                    }),
                 ExportAction::make()
                     ->exports([
                         ExcelExport::make()

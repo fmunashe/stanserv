@@ -4,12 +4,14 @@ namespace App\Filament\Resources\PumpCalibrationResource\Pages;
 
 use App\Filament\Resources\PumpCalibrationResource;
 use App\Models\PumpCalibration;
+use App\Models\PumpCalibrationMeasureDetail;
 use Filament\Actions;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Toggle;
 use Filament\Notifications\Notification;
 use Filament\Pages\Actions\Action;
 use Filament\Resources\Pages\ViewRecord;
+use Illuminate\Support\Facades\Log;
 
 class ViewPumpCalibration extends ViewRecord
 {
@@ -73,7 +75,12 @@ class ViewPumpCalibration extends ViewRecord
                         ->searchable()
                         ->preload()
                         ->multiple()
-                        ->options($this->record->calibrationMeasureDetails->pluck('difference', 'id')->toArray()),
+                        ->options($this->record->calibrationMeasureDetails->pluck('percentage_error', 'id')->toArray())
+//                        ->getOptionLabelFromRecordUsing(fn(PumpCalibrationMeasureDetail $detail) => $detail->id)
+                        ->getOptionLabelFromRecordUsing(function ($record) {
+                            Log::info('data ', [$record]);
+                            return $record['id'];
+                        }),
 
                     Select::make('averageErrorForTheLast')
                         ->label('Average Error For The Last')
@@ -81,7 +88,18 @@ class ViewPumpCalibration extends ViewRecord
                         ->searchable()
                         ->preload()
                         ->multiple()
-                        ->options($this->record->calibrationMeasureDetails->pluck('difference', 'id')->toArray()),
+                        ->options($this->record->calibrationMeasureDetails->pluck('percentage_error', 'id')->toArray()),
+//                        ->getOptionLabelFromRecordUsing(fn(PumpCalibrationMeasureDetail $detail) => $detail->id . ". " . $detail->percentage_error),
+
+
+//                    Select::make('averageErrorForTheLast')
+//                        ->label('Average Error For The Last')
+//                        ->required()
+//                        ->searchable()
+//                        ->preload()
+//                        ->multiple()
+//                        ->options($this->record->calibrationMeasureDetails) ,// Pass the full collection here
+//                        ->getOptionLabelFromRecordUsing(fn(PumpCalibrationMeasureDetail $detail) => $detail->id??"nothing here"),
                     Toggle::make('confirm')
                         ->label("Confirm Update Averages?")
                         ->required()
