@@ -4,13 +4,13 @@ namespace App\Filament\Resources\PumpCalibrationResource\Pages;
 
 use App\Filament\Resources\PumpCalibrationResource;
 use App\Models\PumpCalibration;
-use App\Models\PumpCalibrationMeasureDetail;
 use Filament\Actions;
-use Filament\Forms\Components\Select;
+use Filament\Forms\Components\CheckboxList;
 use Filament\Forms\Components\Toggle;
 use Filament\Notifications\Notification;
 use Filament\Pages\Actions\Action;
 use Filament\Resources\Pages\ViewRecord;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Log;
 
 class ViewPumpCalibration extends ViewRecord
@@ -33,6 +33,8 @@ class ViewPumpCalibration extends ViewRecord
                 ->label('Calculate Averages')
                 ->action(function ($record, array $data): void {
                     if ($data['confirm']) {
+
+                        Log::info("data is ", $data);
                         $beforeAdjustmentsRecords = $record->calibrationMeasureDetails()->wherein('id', $data['averageErrorBeforeAdjustments'])->get(['corrected_volume', 'difference']);
                         $percentageErrors = array();
                         foreach ($beforeAdjustmentsRecords as $beforeAdjustment) {
@@ -69,37 +71,17 @@ class ViewPumpCalibration extends ViewRecord
                     }
                 })
                 ->form([
-                    Select::make('averageErrorBeforeAdjustments')
-                        ->label('Average Error Before Adjustments')
+                    CheckboxList::make('averageErrorBeforeAdjustments')
                         ->required()
-                        ->searchable()
-                        ->preload()
-                        ->multiple()
-                        ->options($this->record->calibrationMeasureDetails->pluck('percentage_error', 'id')->toArray())
-//                        ->getOptionLabelFromRecordUsing(fn(PumpCalibrationMeasureDetail $detail) => $detail->id)
-                        ->getOptionLabelFromRecordUsing(function ($record) {
-                            Log::info('data ', [$record]);
-                            return $record['id'];
-                        }),
+                        ->options( $this->record->calibrationMeasureDetails->mapWithKeys(function ($detail) {
+                            return [$detail->id => $detail->id.") % Error ".$detail->percentage_error];
+                        })->toArray()),
 
-                    Select::make('averageErrorForTheLast')
-                        ->label('Average Error For The Last')
+                    CheckboxList::make('averageErrorForTheLast')
                         ->required()
-                        ->searchable()
-                        ->preload()
-                        ->multiple()
-                        ->options($this->record->calibrationMeasureDetails->pluck('percentage_error', 'id')->toArray()),
-//                        ->getOptionLabelFromRecordUsing(fn(PumpCalibrationMeasureDetail $detail) => $detail->id . ". " . $detail->percentage_error),
-
-
-//                    Select::make('averageErrorForTheLast')
-//                        ->label('Average Error For The Last')
-//                        ->required()
-//                        ->searchable()
-//                        ->preload()
-//                        ->multiple()
-//                        ->options($this->record->calibrationMeasureDetails) ,// Pass the full collection here
-//                        ->getOptionLabelFromRecordUsing(fn(PumpCalibrationMeasureDetail $detail) => $detail->id??"nothing here"),
+                        ->options($this->record->calibrationMeasureDetails->mapWithKeys(function ($detail) {
+                            return [$detail->id => $detail->id.") % Error  ".$detail->percentage_error];
+                        })->toArray()),
                     Toggle::make('confirm')
                         ->label("Confirm Update Averages?")
                         ->required()
