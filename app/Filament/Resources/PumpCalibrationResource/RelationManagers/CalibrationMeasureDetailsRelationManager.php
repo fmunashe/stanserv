@@ -42,7 +42,7 @@ class CalibrationMeasureDetailsRelationManager extends RelationManager
                         if ($get('pump_under_test_volume')
                             && $get('corrected_volume')
                         ) {
-                            $set('difference', $get('corrected_volume') - $get('pump_under_test_volume'));
+                            $set('difference',  number_format($get('corrected_volume') - $get('pump_under_test_volume'), 4, '.', ''));
                         } else {
                             $set('difference', 0.00);
                         }
