@@ -131,7 +131,7 @@ class PumpCalibrationResource extends Resource
                     ->default(Carbon::now())
                     ->live()
                     ->afterStateUpdated(function ($state, callable $set) {
-                        $date = Carbon::parse($state)->addMonths(6)->format('Y-m-d');
+                        $date = Carbon::parse($state)->addMonths(6)->format('d-m-Y');
                         $set('next_date_of_calibration', $date);
                     })
                     ->live(),
