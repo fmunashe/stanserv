@@ -157,11 +157,9 @@ class PumpCalibrationResource extends Resource
                     ->maxLength(255)
                     ->required(),
                 Forms\Components\TextInput::make('avg_pump_percentage_error_before_adjustments')
-                    ->label('Average Pump Percentage Error Before Any Adjustments')
-                    ->numeric(),
+                    ->label('Average Pump Percentage Error Before Any Adjustments'),
                 Forms\Components\TextInput::make('avg_pump_percentage_error_before_assize')
-                    ->label('Average Pump Percentage Error For The Last Five Readings Before Assize')
-                    ->numeric(),
+                    ->label('Average Pump Percentage Error For The Last Five Readings Before Assize'),
                 Forms\Components\TextInput::make('calibrated_by')
                     ->required()
                     ->default(Auth::user()->name),

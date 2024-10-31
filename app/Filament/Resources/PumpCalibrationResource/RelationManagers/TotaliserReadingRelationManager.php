@@ -82,20 +82,20 @@ class TotaliserReadingRelationManager extends RelationManager
             ])
             ->headerActions([
                 Tables\Actions\CreateAction::make()
-                    ->before(function (CreateAction $action, RelationManager $livewire) {
-                        $calibration = $this->ownerRecord;
-                        $existingTotaliser = PumpCalibrationTotaliserReading::where('pump_calibration_id', $calibration->id)->first();
-                        if ($existingTotaliser) {
-                            Notification::make()
-                                ->danger()
-                                ->title('Totaliser Readings Issue!')
-                                ->body('You have already captured totaliser readings for this calibration. If you want to update the entry choose the edit button instead or delete the entry permanently and recapture.')
-                                ->persistent()
-                                ->send();
-
-                            $action->halt();
-                        }
-                    })
+//                    ->before(function (CreateAction $action, RelationManager $livewire) {
+//                        $calibration = $this->ownerRecord;
+//                        $existingTotaliser = PumpCalibrationTotaliserReading::where('pump_calibration_id', $calibration->id)->first();
+//                        if ($existingTotaliser) {
+//                            Notification::make()
+//                                ->danger()
+//                                ->title('Totaliser Readings Issue!')
+//                                ->body('You have already captured totaliser readings for this calibration. If you want to update the entry choose the edit button instead or delete the entry permanently and recapture.')
+//                                ->persistent()
+//                                ->send();
+//
+//                            $action->halt();
+//                        }
+//                    })
                     ->modalWidth('5xl'),
                 ExportAction::make()
                     ->exports([

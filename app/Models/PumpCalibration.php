@@ -30,9 +30,9 @@ class PumpCalibration extends Model
         return $this->belongsTo(PumpDetail::class);
     }
 
-    public function totaliserReading(): HasOne
+    public function totaliserReading(): HasMany
     {
-        return $this->hasOne(PumpCalibrationTotaliserReading::class);
+        return $this->hasMany(PumpCalibrationTotaliserReading::class);
     }
 
     public function calibrationMeasureDetails(): HasMany
