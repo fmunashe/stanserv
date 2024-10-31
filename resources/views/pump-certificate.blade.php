@@ -92,27 +92,54 @@
                 <div><h4 class="uppercase" style="text-align: right"><u>Totaliser Readings</u></h4></div>
 
                 <table class="w-full" style="text-align: right">
-                    @foreach($record->totaliserReading as $reading)
-                        <tr>
-                            <td class="w-half">TOT. FINISH</td>
-                            <td class="w-quarter"><span>:</span></td>
-                            <td class="w-quarter"> {{$reading->tot_finish??null}}</td>
-                        </tr>
-                        <tr>
-                            <td class="w-half">TOT. START</td>
-                            <td class="w-quarter"><span>:</span></td>
-                            <td class="w-quarter">{{$reading->tot_start??null}}</td>
-                        </tr>
-                        <tr>
-                            <td class="w-half">PROD. DRAWN</td>
-                            <td class="w-quarter"><span>:</span></td>
-                            <td class="w-quarter"> {{$reading->prod_drawn??null}}</td>
-                        </tr>
-                      <tr>
-                          <td colspan="3" style="padding-top: 15px"></td>
-                      </tr>
-                    @endforeach
+                    <tr>
+                        <td class="w-half">TOT. FINISH</td>
+                        <td class="w-quarter"><span>:</span></td>
+                        <td class="w-quarter"> {{$record->totaliserReading->first()->tot_finish??null}}</td>
+                    </tr>
+                    <tr>
+                        <td class="w-half">TOT. START</td>
+                        <td class="w-quarter"><span>:</span></td>
+                        <td class="w-quarter">{{$record->totaliserReading->first()->tot_start??null}}</td>
+                    </tr>
+                    <tr>
+                        <td class="w-half">PROD. DRAWN</td>
+                        <td class="w-quarter"><span>:</span></td>
+                        <td class="w-quarter"> {{$record->totaliserReading->first()->prod_drawn??null}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="padding-top: 15px"></td>
+                    </tr>
                 </table>
+
+                @if(count($record->totaliserReading)>1)
+                    @foreach($record->totaliserReading as $reading)
+                        @if($loop->index ==0)
+                            @continue
+                        @endif
+                        <div><h4 class="uppercase" style="text-align: right"><u>Assize Runs</u></h4></div>
+                        <table class="w-full" style="text-align: right">
+                            <tr>
+                                <td class="w-half">TOT. FINISH</td>
+                                <td class="w-quarter"><span>:</span></td>
+                                <td class="w-quarter"> {{$reading->tot_finish??null}}</td>
+                            </tr>
+                            <tr>
+                                <td class="w-half">TOT. START</td>
+                                <td class="w-quarter"><span>:</span></td>
+                                <td class="w-quarter">{{$reading->tot_start??null}}</td>
+                            </tr>
+                            <tr>
+                                <td class="w-half">PROD. DRAWN</td>
+                                <td class="w-quarter"><span>:</span></td>
+                                <td class="w-quarter"> {{$reading->prod_drawn??null}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" style="padding-top: 15px"></td>
+                            </tr>
+                        </table>
+                    @endforeach
+                @endif
             </td>
         </tr>
     </table>
@@ -182,7 +209,8 @@
 
 <p>CALIBRATOR SECURED USING SEALING PLIERS No.: {{$record->sealing_pliers_number??null}}</p>
 
-<p class="uppercase">AVERAGE PUMP % ERROR BEFORE ANY ADJUSTMENTS: {{$record->avg_pump_percentage_error_before_adjustments??null}}</p>
+<p class="uppercase">AVERAGE PUMP % ERROR BEFORE ANY
+    ADJUSTMENTS: {{$record->avg_pump_percentage_error_before_adjustments??null}}</p>
 <p class="uppercase">{{$record->average_pump_percentage_error_wording??null}}
     : {{$record->avg_pump_percentage_error_before_assize??null}}</p>
 
