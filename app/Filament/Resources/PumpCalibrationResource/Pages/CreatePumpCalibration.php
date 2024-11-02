@@ -18,7 +18,7 @@ class CreatePumpCalibration extends CreateRecord
         if ($certificate == null) {
             $id = 1;
             $paddedId = str_pad($id, 3, '0', STR_PAD_LEFT);
-            $certificateNumber = "83P-" . Carbon::now()->format('Y') ."-". $paddedId;
+            $certificateNumber = "83P-" . Carbon::now()->format('Y') . "-" . $paddedId;
         } else {
             $id = $certificate->id + 1;
             $paddedId = str_pad($id, 3, '0', STR_PAD_LEFT);
@@ -28,5 +28,10 @@ class CreatePumpCalibration extends CreateRecord
             'pump_calibration_id' => $calibration->id,
             'certificate_number' => $certificateNumber
         ]);
+    }
+
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('edit', ['record' => $this->getRecord()]);
     }
 }
