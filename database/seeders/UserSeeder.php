@@ -56,16 +56,25 @@ class UserSeeder extends Seeder
                 'email_verified_at' => Carbon::now()
             ], [
                 'id' => 6,
-                'name' => 'Shinhirai',
-                'email' => 'shinhiraimd@sgs-stanserv.com',
+                'name' => 'Shingirai',
+                'email' => 'shingiraimd@sgs-stanserv.com',
                 'password' => Hash::make('password'),
                 'remember_token' => null,
                 'email_verified_at' => Carbon::now()
-            ], [
+            ],
+            [
                 'id' => 7,
                 'name' => 'Benonia',
                 'email' => 'benonia@sgs-stanserv.com',
                 'password' => Hash::make('benonia'),
+                'remember_token' => null,
+                'email_verified_at' => Carbon::now()
+            ],
+            [
+                'id' => 8,
+                'name' => 'Mphumelelo',
+                'email' => 'mpumelelo@sgs-stanserv.com',
+                'password' => Hash::make('password'),
                 'remember_token' => null,
                 'email_verified_at' => Carbon::now()
             ]
