@@ -75,6 +75,7 @@ class PumpCalibrationController extends Controller
 
         $qrcode = base64_encode(QrCode::format('png')->size(500)->generate($verificationLink));
         $pdf = Pdf::loadView('pump-certificate', ['record' => $record, 'qrcode' => $qrcode]);
+        $pdf->setPaper('A3','portrait');
         $pdf->output();
         $canvas = $pdf->getDomPDF()->getCanvas();
         $height = $canvas->get_height();

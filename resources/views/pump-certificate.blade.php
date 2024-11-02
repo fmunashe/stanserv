@@ -10,8 +10,14 @@
 </head>
 <body>
 <header>
-
+    <div class="border-text border-top"></div>
 </header>
+<left>
+    <div class="border-text border-left"></div>
+</left>
+<right>
+    <div class="border-text border-right"></div>
+</right>
 <footer>
     <div class="margin-top">
         <table class="w-full">
@@ -32,6 +38,7 @@
             </tr>
         </table>
     </div>
+    <div class="border-text border-bottom"></div>
 </footer>
 <table class="w-full">
     <tr>

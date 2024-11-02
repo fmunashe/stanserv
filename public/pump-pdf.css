@@ -4,7 +4,13 @@
 
 body {
     /*border: 1px gray double;*/
-    padding: 5px;
+    /*padding: 15px;*/
+    /*margin: 8px;*/
+    padding: 20px;
+    /*font-family: Arial, sans-serif;*/
+    position: relative;
+    /*min-height: 100vh;*/
+    box-sizing: border-box;
 }
 
 .border-container {
@@ -12,10 +18,6 @@ body {
     background-size: cover; /* Adjust based on your needs */
     padding: 20px; /* Space between the content and the border */
     display: inline-block; /* Keeps the background tight around the content */
-}
-.content {
-    background-color: white; /* Background for content area */
-    padding: 10px; /* Inner padding */
 }
 
 /*.repeat {*/
@@ -55,6 +57,25 @@ footer {
     left: 0;
     right: 0;
     height: 50px;
+}
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+}
+left {
+    position: fixed;
+    top: 0;
+    left: -1%;
+    right: 0;
+}
+right {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
 }
 
 table {
@@ -108,4 +129,57 @@ table tr.items td {
 
 .uppercase {
     text-transform: uppercase
+}
+
+/* Common styling for all borders */
+.border-text {
+    position: absolute;
+    font-size: 0.8em;
+    color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/* Top border */
+.border-top {
+    top: -90px;
+    white-space: nowrap;
+}
+.border-top::before {
+    content: " STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSE .";
+}
+
+/* Bottom border */
+.border-bottom {
+    bottom: -81px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+.border-bottom::before {
+    content: ". STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STAN";
+}
+
+/* Left border */
+.border-left {
+    top: 105%;
+    left: 0;
+    transform: translateY(-50%) rotate(-90deg);
+    transform-origin: left;
+    white-space: nowrap;
+}
+.border-left::before {
+    content: " STANSERV . STANSERV .  STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV .STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV .";
+}
+
+/* Right border */
+.border-right {
+    top: 105%;
+    right: 0;
+    transform: translateY(-50%) rotate(90deg);
+    transform-origin: right;
+    white-space: nowrap;
+}
+.border-right::before {
+    content: " STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV .";
 }
