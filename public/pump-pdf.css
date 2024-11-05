@@ -6,11 +6,12 @@ body {
     /*border: 1px gray double;*/
     /*padding: 15px;*/
     /*margin: 8px;*/
-    padding: 20px;
+    padding: 30px;
     /*font-family: Arial, sans-serif;*/
     position: relative;
     /*min-height: 100vh;*/
     box-sizing: border-box;
+    background-color: #a6d3e2;
 }
 
 .border-container {
@@ -56,14 +57,19 @@ footer {
     bottom: 0;
     left: 0;
     right: 0;
-    height: 50px;
+    height: 40px;
+    /*background-color: red;*/
+    /*margin: 0.5%;*/
+    margin-left: 0.3%;
+    margin-right: 0.3%;
 }
 header {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    height: 50px;
+    /*height: 50px;*/
+    background-color: #a6d3e2;
 }
 left {
     position: fixed;
@@ -135,7 +141,8 @@ table tr.items td {
 .border-text {
     position: absolute;
     font-size: 0.8em;
-    color: #333;
+    /*color: #333;*/
+    background-color: #a6d3e2;
     white-space: nowrap;
     overflow: hidden;
 }
@@ -144,32 +151,40 @@ table tr.items td {
 .border-top {
     top: -90px;
     white-space: nowrap;
+    left: -0.7%;
+}
+
+.image-top{
+    top: -5.5%;
+    white-space: nowrap;
+    background-color: #a6d3e2;
 }
 .border-top::before {
-    content: " STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSE .";
+    content: "STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV .";
 }
 
 /* Bottom border */
 .border-bottom {
-    bottom: -81px;
+    bottom: -200%;
+    /*bottom: -82.99px;*/
     left: 50%;
     transform: translateX(-50%);
     white-space: nowrap;
 }
 .border-bottom::before {
-    content: ". STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STAN";
+    content: ". STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSEV. .";
 }
 
 /* Left border */
 .border-left {
-    top: 105%;
-    left: 0;
+    top: 104.9%;
+    left: 1%;
     transform: translateY(-50%) rotate(-90deg);
     transform-origin: left;
     white-space: nowrap;
 }
 .border-left::before {
-    content: " STANSERV . STANSERV .  STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV .STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV .";
+    content: " STANSERV . STANSERV .  STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV .STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV  ..";
 }
 
 /* Right border */

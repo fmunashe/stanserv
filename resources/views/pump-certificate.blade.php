@@ -11,6 +11,19 @@
 <body>
 <header>
     <div class="border-text border-top"></div>
+    <div class="image-top border-text" style="background-color: #a6d3e2; width: 100%">
+{{--        <img src="{{ public_path('images/logo2.png') }}" alt="saz" width="400"/>--}}
+        <table class="w-full">
+            <tr>
+                <td class="w-half">
+                    <img src="{{ public_path('images/logo2.png') }}" alt="saz" width="90%"/>
+                </td>
+                <td class="w-half">
+                    <h2>Pump Calibration Certificate No. : {{ $record->certificate->certificate_number??null }}</h2>
+                </td>
+            </tr>
+        </table>
+    </div>
 </header>
 <left>
     <div class="border-text border-left"></div>
@@ -19,13 +32,14 @@
     <div class="border-text border-right"></div>
 </right>
 <footer>
-    <div class="margin-top">
+    <div class="margin-top" style="background-color: #a6d3e2;margin: 0.5%">
         <table class="w-full">
             <tr>
-                <td style="width: 10%">
+                <td style="width: 2%"></td>
+                <td style="width: 18%">
                     <img src="{{public_path('/images/saz-logo2.png')}}" alt="SAZ" width="110" height="100"/>
                 </td>
-                <td style="width: 90%">
+                <td style="width: 80%">
                     <table class="w-full">
                         <tr>
                             <td style="width: 80%"><h6 class="red">ISO 45001: 2018 OH&S MANAGEMENT SYSTEM CERTIFIED</h6>
@@ -40,16 +54,16 @@
     </div>
     <div class="border-text border-bottom"></div>
 </footer>
-<table class="w-full">
-    <tr>
-        <td class="w-half">
-            {{--            <img src="{{ public_path('images/logo.png') }}" alt="saz"/>--}}
-        </td>
-        <td class="w-half">
-            {{--            <h4>Pump Calibration Certificate No. : {{ $record->certificate->certificate_number??null }}</h4>--}}
-        </td>
-    </tr>
-</table>
+{{--<table class="w-full">--}}
+{{--    <tr>--}}
+{{--        <td class="w-half">--}}
+{{--                        <img src="{{ public_path('images/logo.png') }}" alt="saz"/>--}}
+{{--        </td>--}}
+{{--        <td class="w-half">--}}
+{{--            --}}{{--            <h4>Pump Calibration Certificate No. : {{ $record->certificate->certificate_number??null }}</h4>--}}
+{{--        </td>--}}
+{{--    </tr>--}}
+{{--</table>--}}
 
 <div class="margin-top">
     <table class="w-full">
