@@ -12,22 +12,10 @@ body {
     /*min-height: 100vh;*/
     box-sizing: border-box;
     background-color: #a6d3e2;
+    margin-top: 5%;
 }
 
-.border-container {
-    background-image: url(images/test.jpg!d);
-    background-size: cover; /* Adjust based on your needs */
-    padding: 20px; /* Space between the content and the border */
-    display: inline-block; /* Keeps the background tight around the content */
-}
 
-/*.repeat {*/
-/*    border: 8px solid skyblue;*/
-/*    border-image: url(https://c.pxhere.com/images/c4/56/a9d6dfc04d5ad4b03669dcc2523c-1617980.jpg!d) 50 repeat;*/
-/*}*/
-/*.page-number:before {*/
-/*    content: "Page " counter(page);*/
-/*}*/
 h4 {
     margin: 0;
 }
@@ -69,7 +57,6 @@ header {
     left: 0;
     right: 0;
     /*height: 50px;*/
-    background-color: #a6d3e2;
 }
 left {
     position: fixed;

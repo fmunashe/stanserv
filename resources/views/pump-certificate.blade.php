@@ -11,12 +11,11 @@
 <body>
 <header>
     <div class="border-text border-top"></div>
-    <div class="image-top border-text" style="background-color: #a6d3e2; width: 100%">
-{{--        <img src="{{ public_path('images/logo2.png') }}" alt="saz" width="400"/>--}}
-        <table class="w-full">
+    <div class="image-top border-text" style="background-color: #a6d3e2; width: 100%; padding-top: 1%">
+        <table class="w-full" style="padding-left:  1%">
             <tr>
                 <td class="w-half">
-                    <img src="{{ public_path('images/logo2.png') }}" alt="saz" width="90%"/>
+                    <img src="{{ public_path('images/logo-latest.svg') }}" alt="saz" width="90%"/>
                 </td>
                 <td class="w-half">
                     <h2>Pump Calibration Certificate No. : {{ $record->certificate->certificate_number??null }}</h2>
@@ -54,16 +53,6 @@
     </div>
     <div class="border-text border-bottom"></div>
 </footer>
-{{--<table class="w-full">--}}
-{{--    <tr>--}}
-{{--        <td class="w-half">--}}
-{{--                        <img src="{{ public_path('images/logo.png') }}" alt="saz"/>--}}
-{{--        </td>--}}
-{{--        <td class="w-half">--}}
-{{--            --}}{{--            <h4>Pump Calibration Certificate No. : {{ $record->certificate->certificate_number??null }}</h4>--}}
-{{--        </td>--}}
-{{--    </tr>--}}
-{{--</table>--}}
 
 <div class="margin-top">
     <table class="w-full">

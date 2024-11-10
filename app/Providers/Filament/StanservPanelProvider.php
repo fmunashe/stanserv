@@ -37,8 +37,8 @@ class StanservPanelProvider extends PanelProvider
             ->brandName('Stanserv Genuine Services')
             ->defaultThemeMode(ThemeMode::Light)
             ->colors([
-//                'primary' => Color::Teal,
-                'primary' => Color::rgb('rgb(149,208,224)'),
+                'primary' => Color::Teal,
+//                'primary' => Color::rgb('rgb(149,208,224)'),
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
@@ -68,10 +68,9 @@ class StanservPanelProvider extends PanelProvider
 //                \Hasnayeen\Themes\ThemesPlugin::make()
             ])
             ->sidebarFullyCollapsibleOnDesktop()
-            ->brandLogo(asset('images/logo2.png'))
-//                ->brandLogo(url('https://www.econet.co.zw/wp-content/uploads/2022/05/EconetLogo.png'))
-            ->favicon(asset('images/logo.png'))
-            ->brandLogoHeight(1)
+            ->brandLogo(asset('images/logo-latest.svg'))
+            ->favicon(asset('images/logo-latest.svg'))
+            ->brandLogoHeight("60px")
             ->maxContentWidth(MaxWidth::Full)
             ->navigationGroups([
                 NavigationGroup::make()
