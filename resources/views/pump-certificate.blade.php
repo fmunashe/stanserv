@@ -60,12 +60,12 @@
             <td class="w-half">
                 <table class="w-full">
                     <tr>
-                        <td class="w-half"><span class="uppercase">Certificate No.</span></td>
-                        <td class="w-half"> : {{ $record->certificate->certificate_number??null }}</td>
-                    </tr>
-                    <tr>
                         <td class="w-half"><span class="uppercase">Client</span></td>
                         <td class="w-half">: {{ $record->pumpOwner->company_name??null }}</td>
+                    </tr>
+                    <tr>
+                        <td class="w-half"><span class="uppercase">Certificate No.</span></td>
+                        <td class="w-half"> : {{ $record->certificate->certificate_number??null }}</td>
                     </tr>
                     <tr>
                         <td class="w-half"><span class="uppercase">Pump type</span></td>

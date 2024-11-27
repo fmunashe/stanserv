@@ -71,11 +71,12 @@ class PumpCalibrationController extends Controller
     {
         $record = PumpCalibration::findOrFail($record);
 
-        $verificationLink = env('APP_URL')."/pumpCalibrationCertificate/".$record->id;
+        $verificationLink = env('APP_URL') . "/pumpCalibrationCertificate/" . $record->id;
+        $data = "Certificate Number: " . $record->certificate->certificate_number . "\nDate calibrated: " . $record->calibration_date . "\nDate of expiry: " . $record->next_date_of_calibration . "\nAuthenticity: Authentic" . "\nVerificationLink :" . $verificationLink . "\n Request For Quotation: info@sgs-stanserv.com" . "\nSite Link: https://www.sgs-stanserv.com";
 
-        $qrcode = base64_encode(QrCode::format('png')->size(500)->generate($verificationLink));
+        $qrcode = base64_encode(QrCode::format('png')->size(500)->generate($data));
         $pdf = Pdf::loadView('pump-certificate', ['record' => $record, 'qrcode' => $qrcode]);
-        $pdf->setPaper('A3','portrait');
+        $pdf->setPaper('A3', 'portrait');
         $pdf->output();
         $canvas = $pdf->getDomPDF()->getCanvas();
         $height = $canvas->get_height();
