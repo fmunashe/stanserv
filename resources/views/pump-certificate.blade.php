@@ -36,7 +36,7 @@
             <tr>
                 <td style="width: 2%"></td>
                 <td style="width: 18%">
-                    <img src="{{public_path('/images/saz-logo2.png')}}" alt="SAZ" width="110" height="100"/>
+                    <img src="{{public_path('/images/saz-logo3.png')}}" alt="SAZ" width="110" height="110"/>
                 </td>
                 <td style="width: 80%">
                     <table class="w-full">
