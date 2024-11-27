@@ -214,7 +214,7 @@
 </div>
 
 <div class="margin-top uppercase">
-    <h4><u>{{$record->pumpCalibrationStatus->status}}</u></h4>
+    <h4><u>{{$record->pumpCalibrationStatus->status??""}}</u></h4>
 </div>
 
 <p>CALIBRATOR SECURED USING SEALING PLIERS No.: {{$record->sealing_pliers_number??null}}</p>
