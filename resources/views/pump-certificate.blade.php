@@ -99,7 +99,7 @@
                         <td><img src="data:image/png;base64,{{ $qrcode}}" alt="QR Code" height="100" width="130"></td>
                     </tr>
                 </table>
-                <div><h4 class="uppercase" style="text-align: right"><u>Totaliser Readings</u></h4></div>
+                <div><h4 class="uppercase" style="text-align: right; margin-top: 5%"><u>Totaliser Readings</u></h4></div>
 
                 <table class="w-full" style="text-align: right">
                     <tr>
