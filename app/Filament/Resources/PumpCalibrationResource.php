@@ -169,6 +169,10 @@ class PumpCalibrationResource extends Resource
                     ->label('Trade Measures Inspector')
                     ->maxLength(255)
                     ->required(),
+                Forms\Components\Select::make('pump_calibration_status_id')
+                    ->relationship('pumpCalibrationStatus', 'status')
+                    ->searchable()
+                    ->preload(),
                 Forms\Components\Textarea::make('average_pump_percentage_error_wording')
                     ->label('Average Pump Percentage Error Wording')
                     ->required()

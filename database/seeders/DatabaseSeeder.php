@@ -13,6 +13,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        $this->call(PumpCalibrationStatusSeeder::class);
         $this->call(PermissionSeeder::class);
         $this->call(RoleSeeder::class);
         $this->call(UserSeeder::class);
@@ -24,5 +25,6 @@ class DatabaseSeeder extends Seeder
         $this->call(PumpTypeSeeder::class);
         $this->call(PumpOwnerSeeder::class);
         $this->call(CalibrationProductSeeder::class);
+
     }
 }

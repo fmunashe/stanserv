@@ -54,4 +54,9 @@ class PumpCalibration extends Model
     {
         return $this->hasMany(CalibrationStandard::class);
     }
+
+    public function pumpCalibrationStatus(): BelongsTo
+    {
+       return $this->belongsTo(PumpCalibrationStatus::class);
+    }
 }

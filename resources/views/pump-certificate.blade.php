@@ -213,8 +213,8 @@
     </table>
 </div>
 
-<div class="margin-top">
-    <h4><u>PUMP PASSED CALIBRATION AND ASSIZE TEST.</u></h4>
+<div class="margin-top uppercase">
+    <h4><u>{{$record->pumpCalibrationStatus->status}}</u></h4>
 </div>
 
 <p>CALIBRATOR SECURED USING SEALING PLIERS No.: {{$record->sealing_pliers_number??null}}</p>
