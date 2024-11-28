@@ -255,11 +255,11 @@
     <table class="w-full" style="border-spacing: 0 15px;">
         <tr>
             <td class="w-half">DATE OF CALIBRATION</td>
-            <td>:{{$record->calibration_date??null}}</td>
+            <td>:{{\Carbon\Carbon::parse($record->calibration_date)->format('d-m-Y')??null}}</td>
         </tr>
         <tr>
             <td class="w-half">DATE OF NEXT CALIBRATION</td>
-            <td>:{{$record->next_date_of_calibration??null}}</td>
+            <td>:{{\Carbon\Carbon::parse($record->next_date_of_calibration)->format('d-m-Y')??null}}</td>
         </tr>
         <tr>
             <td class="w-half">CALIBRATED BY TECHNICIAN</td>
