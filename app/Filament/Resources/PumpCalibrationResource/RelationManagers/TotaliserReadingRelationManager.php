@@ -33,7 +33,7 @@ class TotaliserReadingRelationManager extends RelationManager
                         if ($get('tot_start')
                             && $get('tot_finish')
                         ) {
-                            $set('prod_drawn', $get('tot_finish') - $get('tot_start'));
+                          $set('prod_drawn', round($get('tot_finish') - $get('tot_start'),1));
                         } else {
                             $set('prod_drawn', 0.00);
                         }
@@ -47,7 +47,7 @@ class TotaliserReadingRelationManager extends RelationManager
                         if ($get('tot_start')
                             && $get('tot_finish')
                         ) {
-                            $set('prod_drawn', $get('tot_finish') - $get('tot_start'));
+                            $set('prod_drawn', round($get('tot_finish') - $get('tot_start'),1));
                         } else {
                             $set('prod_drawn', 0.00);
                         }
