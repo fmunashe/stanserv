@@ -105,17 +105,17 @@
                     <tr>
                         <td class="w-half">TOT. FINISH</td>
                         <td class="w-quarter"><span>:</span></td>
-                        <td class="w-quarter"> {{$record->totaliserReading->first()->tot_finish??null}}</td>
+                        <td class="w-quarter"> {{number_format($record->totaliserReading->first()->tot_finish,0,'','')??null}}</td>
                     </tr>
                     <tr>
                         <td class="w-half">TOT. START</td>
                         <td class="w-quarter"><span>:</span></td>
-                        <td class="w-quarter">{{$record->totaliserReading->first()->tot_start??null}}</td>
+                        <td class="w-quarter">{{number_format($record->totaliserReading->first()->tot_start,0,'','')??null}}</td>
                     </tr>
                     <tr>
                         <td class="w-half">PROD. DRAWN</td>
                         <td class="w-quarter"><span>:</span></td>
-                        <td class="w-quarter"> {{$record->totaliserReading->first()->prod_drawn??null}}</td>
+                        <td class="w-quarter"> {{number_format($record->totaliserReading->first()->prod_drawn,0,'','')??null}}</td>
                     </tr>
                     <tr>
                         <td colspan="3" style="padding-top: 15px"></td>
@@ -132,17 +132,17 @@
                             <tr>
                                 <td class="w-half">TOT. FINISH</td>
                                 <td class="w-quarter"><span>:</span></td>
-                                <td class="w-quarter"> {{$reading->tot_finish??null}}</td>
+                                <td class="w-quarter"> {{number_format($reading->tot_finish,0,'','')??null}}</td>
                             </tr>
                             <tr>
                                 <td class="w-half">TOT. START</td>
                                 <td class="w-quarter"><span>:</span></td>
-                                <td class="w-quarter">{{$reading->tot_start??null}}</td>
+                                <td class="w-quarter">{{number_format($reading->tot_start,0,'','')??null}}</td>
                             </tr>
                             <tr>
                                 <td class="w-half">PROD. DRAWN</td>
                                 <td class="w-quarter"><span>:</span></td>
-                                <td class="w-quarter"> {{$reading->prod_drawn??null}}</td>
+                                <td class="w-quarter"> {{number_format($reading->prod_drawn,0,'','')??null}}</td>
                             </tr>
                             <tr>
                                 <td colspan="3" style="padding-top: 15px"></td>
@@ -178,7 +178,7 @@
 </div>
 
 <div class="margin-top">
-    <h4 class="uppercase">20000 & 5000 M/Litre Assized Test Measure</h4>
+    <h4 class="uppercase">Calibration Runs</h4>
 </div>
 
 <div class="margin-top" style="bottom: 50px">
@@ -220,7 +220,7 @@
 <p>CALIBRATOR SECURED USING SEALING PLIERS No.: {{$record->sealing_pliers_number??null}}</p>
 
 <p class="uppercase">AVERAGE PUMP PERCENTAGE ERROR BEFORE ANY
-    ADJUSTMENTS: {{$record->avg_pump_percentage_error_before_adjustments??null}}</p>
+    ADJUSTMENTS: {{$record->avg_pump_percentage_error_before_adjustments??null}} %</p>
 <p class="uppercase">{{$record->average_pump_percentage_error_wording??null}}
     : {{$record->avg_pump_percentage_error_before_assize??null}} %</p>
 
