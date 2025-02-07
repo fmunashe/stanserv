@@ -51,7 +51,6 @@ class PumpDetailResource extends Resource
                     ->maxLength(255),
                 Forms\Components\TextInput::make('serial_number')
                     ->required()
-                    ->unique('pump_details', 'serial_number', ignoreRecord: true)
                     ->maxLength(255),
                 Forms\Components\TextInput::make('flow_rate')
                     ->label('Flow Rate LPM (Litre Per Minute)')

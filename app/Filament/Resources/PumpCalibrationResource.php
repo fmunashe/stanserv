@@ -50,7 +50,6 @@ class PumpCalibrationResource extends Resource
                             ->email()
                             ->maxLength(255),
                         Forms\Components\TextInput::make('contact_person')
-                            ->required()
                             ->maxLength(255),
                         Forms\Components\TextInput::make('contact_person_phone')
                             ->tel()
@@ -120,7 +119,6 @@ class PumpCalibrationResource extends Resource
                             ->maxLength(255),
                         Forms\Components\TextInput::make('serial_number')
                             ->required()
-                            ->unique('pump_details', 'serial_number', ignoreRecord: true)
                             ->maxLength(255),
                         Forms\Components\TextInput::make('flow_rate')
                             ->required()
