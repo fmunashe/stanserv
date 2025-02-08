@@ -7,6 +7,7 @@ use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -74,5 +75,10 @@ class User extends Authenticatable implements FilamentUser, \OwenIt\Auditing\Con
     public function canAccessPanel(Panel $panel): bool
     {
         return true;
+    }
+
+    public function signature(): HasMany
+    {
+        return $this->hasMany(Signature::class);
     }
 }

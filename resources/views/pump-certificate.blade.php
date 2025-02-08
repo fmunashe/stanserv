@@ -99,7 +99,8 @@
                         <td><img src="data:image/png;base64,{{ $qrcode}}" alt="QR Code" height="100" width="130"></td>
                     </tr>
                 </table>
-                <div><h4 class="uppercase" style="text-align: right; margin-top: 5%"><u>Totaliser Readings</u></h4></div>
+                <div><h4 class="uppercase" style="text-align: right; margin-top: 5%"><u>Totaliser Readings</u></h4>
+                </div>
 
                 <table class="w-full" style="text-align: right">
                     <tr>
@@ -275,7 +276,8 @@
         </tr>
         <tr>
             <td class="w-half">AUTHORIZED SIGNATURE</td>
-            <td><img src="{{ $record->signature}}" alt="Signature" height="50" width="400"></td>
+            <td><img src="{{ public_path('storage/' . basename($signaturePath)) }}" alt="Signature" height="50"
+                     width="400"></td>
         </tr>
     </table>
     <table class="w-full" style="border-spacing: 0 15px;">

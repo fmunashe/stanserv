@@ -7,6 +7,7 @@ use App\Http\Requests\UpdatePumpCalibrationRequest;
 use App\Models\PumpCalibration;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Log;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class PumpCalibrationController extends Controller
@@ -69,19 +70,19 @@ class PumpCalibrationController extends Controller
 
     public function generateCertificate($record): Response
     {
-        $record = PumpCalibration::findOrFail($record);
-
+        $record = PumpCalibration::query()->with(['userSignature'])->where('id', '=', $record)->first();
+        $signaturePath = storage_path('app/public/' . $record->userSignature->signature);
         $verificationLink = env('APP_URL') . "/pumpCalibrationCertificate/" . $record->id;
         $data = "Certificate Number: " . $record->certificate->certificate_number .
             "\nDate calibrated: " . $record->calibration_date .
             "\nDate of expiry: " . $record->next_date_of_calibration .
             "\nAuthenticity: Authentic" . "\nVerificationLink :" .
             $verificationLink
-            ."\n Request For Quotation: info@sgs-stanserv.com" .
+            . "\n Request For Quotation: info@sgs-stanserv.com" .
             "\nSite Link: https://www.sgs-stanserv.com";
 
         $qrcode = base64_encode(QrCode::format('png')->size(500)->generate($data));
-        $pdf = Pdf::loadView('pump-certificate', ['record' => $record, 'qrcode' => $qrcode]);
+        $pdf = Pdf::loadView('pump-certificate', ['record' => $record, 'qrcode' => $qrcode, 'signaturePath' => $signaturePath]);
         $pdf->setPaper('A3', 'portrait');
         $pdf->output();
         $canvas = $pdf->getDomPDF()->getCanvas();

@@ -57,6 +57,11 @@ class PumpCalibration extends Model
 
     public function pumpCalibrationStatus(): BelongsTo
     {
-       return $this->belongsTo(PumpCalibrationStatus::class);
+        return $this->belongsTo(PumpCalibrationStatus::class);
+    }
+
+    public function userSignature(): BelongsTo
+    {
+        return $this->belongsTo(Signature::class,'signature_id','id');
     }
 }

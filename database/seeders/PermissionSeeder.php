@@ -135,11 +135,18 @@ class PermissionSeeder extends Seeder
             ['name' => 'calibration_product_show', 'description' => 'Can view a calibration product'],
             ['name' => 'calibration_product_edit', 'description' => 'Can edit and update a calibration product'],
             ['name' => 'calibration_product_delete', 'description' => 'Can delete a calibration product'],
+
             ['name' => 'calibration_standard_access', 'description' => 'Can access calibration standards page'],
             ['name' => 'calibration_standard_create', 'description' => 'Can create new calibration standard'],
             ['name' => 'calibration_standard_show', 'description' => 'Can view a calibration standard'],
             ['name' => 'calibration_standard_edit', 'description' => 'Can edit and update a calibration standard'],
             ['name' => 'calibration_standard_delete', 'description' => 'Can delete a calibration standard'],
+
+            ['name' => 'signature_access', 'description' => 'Can access signatures page'],
+            ['name' => 'signature_create', 'description' => 'Can create new signature'],
+            ['name' => 'signature_show', 'description' => 'Can view a signature'],
+            ['name' => 'signature_edit', 'description' => 'Can edit and update a signature'],
+            ['name' => 'signature_delete', 'description' => 'Can delete a signature'],
         ];
         foreach ($permissions as $permission) {
             Permission::query()->firstOrCreate($permission, $permission);
