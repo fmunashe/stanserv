@@ -276,7 +276,7 @@
         </tr>
         <tr>
             <td class="w-half">AUTHORIZED SIGNATURE</td>
-            <td><img src="{{ public_path('storage/' . basename($signaturePath)) }}" alt="Signature" height="50"
+            <td><img src="{{ public_path('storage/' . basename($signaturePath)) }}" alt="" height="50"
                      width="400"></td>
         </tr>
     </table>
