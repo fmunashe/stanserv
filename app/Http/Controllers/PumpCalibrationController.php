@@ -71,10 +71,9 @@ class PumpCalibrationController extends Controller
     public function generateCertificate($record): Response
     {
         $record = PumpCalibration::query()->with(['userSignature'])->where('id', '=', $record)->first();
-        $signaturePath ="";
-        if ($record->userSignature->signature){
-            $signaturePath = storage_path('app/public/' . $record->userSignature->signature);
-        }
+
+        $signaturePath = optional($record->userSignature)->signature ? storage_path('app/public/' . $record->userSignature->signature) : null;
+
         $verificationLink = env('APP_URL') . "/pumpCalibrationCertificate/" . $record->id;
         $data = "Certificate Number: " . $record->certificate->certificate_number .
             "\nDate calibrated: " . $record->calibration_date .
