@@ -277,7 +277,7 @@
         <tr>
             <td class="w-half">AUTHORIZED SIGNATURE</td>
             <td><img src="{{ public_path('storage/' . basename($signaturePath)) }}" alt="____________________________" height="50"
-                     width="400"></td>
+                     width="100"></td>
         </tr>
     </table>
     <table class="w-full" style="border-spacing: 0 15px;">
