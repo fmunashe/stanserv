@@ -221,7 +221,7 @@
 <p>CALIBRATOR SECURED USING SEALING PLIERS No.: {{$record->sealing_pliers_number??null}}</p>
 
 <p class="uppercase">AVERAGE PUMP PERCENTAGE ERROR BEFORE ANY
-    ADJUSTMENTS: {{$record->avg_pump_percentage_error_before_adjustments??null}} %</p>
+    ADJUSTMENTS: {{$record->avg_pump_percentage_error_before_adjustments??null}} {{$record->avg_pump_percentage_error_before_adjustments=="Not Adjusted"?"":"%"}}</p>
 <p class="uppercase">{{$record->average_pump_percentage_error_wording??null}}
     : {{$record->avg_pump_percentage_error_before_assize??null}} %</p>
 
