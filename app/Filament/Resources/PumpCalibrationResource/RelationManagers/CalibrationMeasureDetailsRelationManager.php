@@ -24,13 +24,17 @@ class CalibrationMeasureDetailsRelationManager extends RelationManager
             ->schema([
                 Forms\Components\TextInput::make('corrected_volume')
                     ->required()
-                    ->numeric()
                     ->live(onBlur: true)
                     ->afterStateUpdated(function ($state, callable $get, callable $set) {
                         if ($get('pump_under_test_volume')
                             && $get('corrected_volume')
                         ) {
-                            $set('difference', number_format($get('corrected_volume') - $get('pump_under_test_volume'), 4, '.', ''));
+                            if (is_numeric($get('corrected_volume'))) {
+                                $set('difference', number_format($get('corrected_volume') - $get('pump_under_test_volume'), 4, '.', ''));
+                            }else{
+                                $set('difference','-----');
+                            }
+
                         } else {
                             $set('difference', 0.00);
                         }
@@ -43,14 +47,17 @@ class CalibrationMeasureDetailsRelationManager extends RelationManager
                         if ($get('pump_under_test_volume')
                             && $get('corrected_volume')
                         ) {
-                            $set('difference',  number_format($get('corrected_volume') - $get('pump_under_test_volume'), 4, '.', ''));
+                           if (is_numeric($get('corrected_volume'))) {
+                               $set('difference',  number_format($get('corrected_volume') - $get('pump_under_test_volume'), 4, '.', ''));
+                           }else{
+                               $set('difference','-----');
+                           }
                         } else {
                             $set('difference', 0.00);
                         }
                     }),
                 Forms\Components\TextInput::make('difference')
                     ->required()
-                    ->numeric()
                     ->readOnly(),
                 Forms\Components\Textarea::make('corrective_action')
                     ->maxLength(225)
@@ -79,7 +86,7 @@ class CalibrationMeasureDetailsRelationManager extends RelationManager
                     ->label("New Calibration / Assize Runs")
                     ->modalWidth('5xl')
                     ->mutateFormDataUsing(function (array $data): array {
-                        $data['percentage_error'] = number_format((($data['corrected_volume'] - $data['pump_under_test_volume']) / ($data['corrected_volume'])) * 100, 3, '.', '');
+                        $data['percentage_error'] = is_numeric($data['corrected_volume'])?number_format((($data['corrected_volume'] - $data['pump_under_test_volume']) / ($data['corrected_volume'])) * 100, 3, '.', ''):'------';
                         return $data;
                     }),
                 ExportAction::make()

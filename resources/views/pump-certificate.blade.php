@@ -193,22 +193,24 @@
         </tr>
         @if($record)
             @foreach($record->calibrationMeasureDetails as $item)
-                <tr class="items" style="text-align: center">
-                    <td class="tr">
-                        {{ $loop->index+1 }}
-                    </td>
-                    <td class="tr">{{$item->corrected_volume }}
-                    </td>
-                    <td class="tr">
-                        {{ $item->pump_under_test_volume }}
-                    </td>
-                    <td class="tr">
-                        {{ $item->difference }}
-                    </td>
-                    <td class="tr">
-                        {{ $item->corrective_action }}
-                    </td>
-                </tr>
+                @if(is_numeric($item->corrected_volume))
+                    <tr class="items" style="text-align: center">
+                        <td class="tr">
+                            {{ $loop->index+1 }}
+                        </td>
+                        <td class="tr">{{$item->corrected_volume }}
+                        </td>
+                        <td class="tr">
+                            {{ $item->pump_under_test_volume }}
+                        </td>
+                        <td class="tr">
+                            {{ $item->difference }}
+                        </td>
+                        <td class="tr">
+                            {{ $item->corrective_action }}
+                        </td>
+                    </tr>
+                @endif
             @endforeach
         @endif
     </table>
@@ -276,7 +278,8 @@
         </tr>
         <tr>
             <td class="w-half">AUTHORIZED SIGNATURE</td>
-            <td><img src="{{ public_path('storage/' . basename($signaturePath)) }}" alt="____________________________" height="50"
+            <td><img src="{{ public_path('storage/' . basename($signaturePath)) }}" alt="____________________________"
+                     height="50"
                      width="100"></td>
         </tr>
     </table>
