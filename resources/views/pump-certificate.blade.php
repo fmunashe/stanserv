@@ -193,7 +193,6 @@
         </tr>
         @if($record)
             @foreach($record->calibrationMeasureDetails as $item)
-                @if(is_numeric($item->corrected_volume))
                     <tr class="items" style="text-align: center">
                         <td class="tr">
                             {{ $loop->index+1 }}
@@ -210,7 +209,6 @@
                             {{ $item->corrective_action }}
                         </td>
                     </tr>
-                @endif
             @endforeach
         @endif
     </table>
