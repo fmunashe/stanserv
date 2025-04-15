@@ -197,13 +197,13 @@
                         <td class="tr">
                             {{ $loop->index+1 }}
                         </td>
-                        <td class="tr">{{$item->corrected_volume }}
+                        <td class="tr">{{is_numeric($item->corrected_volume)?number_format($item->corrected_volume,3,'.',''):$item->corrected_volume}}
                         </td>
                         <td class="tr">
-                            {{ $item->pump_under_test_volume }}
+                            {{ is_numeric($item->pump_under_test_volume)?number_format($item->pump_under_test_volume,3,'.',''):$item->pump_under_test_volume }}
                         </td>
                         <td class="tr">
-                            {{ $item->difference }}
+                            {{ is_numeric($item->difference)?number_format($item->difference,3,'.',''):$item->difference }}
                         </td>
                         <td class="tr">
                             {{ $item->corrective_action }}
