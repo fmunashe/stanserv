@@ -139,7 +139,10 @@ class PumpCalibrationResource extends Resource
                     ->live()
                     ->readOnly(),
                 Forms\Components\Select::make('calibration_product_id')
-                    ->relationship('calibrationProduct', 'name')
+                    ->relationship(
+                        'calibrationProduct',
+                        'name',
+                        modifyQueryUsing: fn ($query) => $query->whereNotNull('name'))
                     ->searchable()
                     ->preload()
                     ->required()
