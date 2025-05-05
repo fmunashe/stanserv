@@ -216,26 +216,37 @@ class PumpCalibrationResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('pumpOwner.company_name')
                     ->searchable()
-                    ->sortable(),
+                    ->sortable()
+                    ->toggleable(),
+                Tables\Columns\TextColumn::make('pumpDetail.location')
+                    ->label('Location')
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(),
                 Tables\Columns\TextColumn::make('pumpDetail.serial_number')
                     ->label('Pump Serial Number')
                     ->searchable()
-                    ->sortable(),
+                    ->sortable()
+                    ->toggleable(),
                 Tables\Columns\TextColumn::make('calibration_date')
                     ->date()
-                    ->sortable(),
+                    ->sortable()
+                    ->toggleable(),
                 Tables\Columns\TextColumn::make('next_date_of_calibration')
                     ->date()
-                    ->sortable(),
+                    ->sortable()
+                    ->toggleable(),
                 Tables\Columns\TextColumn::make('calibrated_by')
                     ->sortable()
-                    ->searchable(),
+                    ->searchable()
+                    ->toggleable(),
                 Tables\Columns\TextColumn::make('assisted_by')
                     ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('material_of_construction')
                     ->sortable()
-                    ->searchable(),
+                    ->searchable()
+                    ->toggleable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
