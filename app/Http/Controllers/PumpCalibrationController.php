@@ -70,6 +70,7 @@ class PumpCalibrationController extends Controller
 
     public function generateCertificate($record): Response
     {
+        ini_set('memory_limit', -1);
         $record = PumpCalibration::query()->with(['userSignature'])->where('id', '=', $record)->first();
 
         $signaturePath = optional($record->userSignature)->signature ? storage_path('app/public/' . $record->userSignature->signature) : null;
