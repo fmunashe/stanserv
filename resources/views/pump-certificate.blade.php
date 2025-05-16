@@ -15,7 +15,7 @@
         <table class="w-full" style="padding-left:  1%">
             <tr>
                 <td class="w-half">
-                    <img src="{{ public_path('images/logo-latest.png') }}" alt="saz" width="90%"/>
+                    <img src="{{ public_path('images/logo-latest.png') }}" alt="saz" width="80%"/>
                 </td>
                 <td class="w-half">
                     <h2>Pump Calibration Certificate No. : {{ $record->certificate->certificate_number??null }}</h2>
