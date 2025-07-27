@@ -7,6 +7,7 @@ use App\Filament\Resources\MeterCalibrationResource\RelationManagers;
 use App\Filament\Resources\MeterCalibrationResource\RelationManagers\TotaliserReadingRelationManager;
 use App\Models\MeterCalibration;
 use App\Models\MeterDetail;
+use App\Models\Signature;
 use Carbon\Carbon;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -164,24 +165,32 @@ class MeterCalibrationResource extends Resource
                     ->default(Auth::user()->name),
                 Forms\Components\TextInput::make('assisted_by')
                     ->maxLength(255),
-                SignaturePad::make('signature')
-                    ->label(__('Authorised Signature'))
-                    ->dotSize(2.0)
-                    ->lineMinWidth(0.5)
-                    ->lineMaxWidth(2.5)
-                    ->throttle(16)
-                    ->minDistance(5)
-                    ->velocityFilterWeight(0.7)
-                    ->filename('autograph')
-                    ->downloadable()
-                    ->downloadActionDropdownPlacement('center-end')
-                    ->confirmable(true)
-                    ->columnSpanFull()
-                    ->visible(function () {
-                        return Auth::user()->roles()->whereHas('permissions', function ($query) {
-                            $query->where('name', 'signature_pad_access');
-                        })->exists();
+//                SignaturePad::make('signature')
+//                    ->label(__('Authorised Signature'))
+//                    ->dotSize(2.0)
+//                    ->lineMinWidth(0.5)
+//                    ->lineMaxWidth(2.5)
+//                    ->throttle(16)
+//                    ->minDistance(5)
+//                    ->velocityFilterWeight(0.7)
+//                    ->filename('autograph')
+//                    ->downloadable()
+//                    ->downloadActionDropdownPlacement('center-end')
+//                    ->confirmable(true)
+//                    ->columnSpanFull()
+//                    ->visible(function () {
+//                        return Auth::user()->roles()->whereHas('permissions', function ($query) {
+//                            $query->where('name', 'signature_pad_access');
+//                        })->exists();
+//                    })
+                Forms\Components\Select::make('signature_id')
+                    ->searchable()
+                    ->label('Signature')
+                    ->preload()
+                    ->options(function () {
+                        return Signature::with('user')->get()->pluck('user.name', 'id');
                     })
+                    ->live()
             ]);
     }
 

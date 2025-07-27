@@ -1,0 +1,187 @@
+@page {
+    margin: 110px 40px 110px;
+}
+
+body {
+    /*border: 1px gray double;*/
+    /*padding: 15px;*/
+    /*margin: 8px;*/
+    padding: 30px;
+    /*font-family: Arial, sans-serif;*/
+    position: relative;
+    /*min-height: 100vh;*/
+    box-sizing: border-box;
+    background-color: #a6d3e2;
+    margin-top: 5%;
+}
+
+
+h4 {
+    margin: 0;
+}
+
+.w-full {
+    width: 100%;
+}
+
+.w-half {
+    width: 50%;
+}
+
+.w-quarter {
+    width: 25%;
+}
+
+.w-three-quarters {
+    width: 75%;
+}
+
+.margin-top {
+    margin-top: 1.25rem;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    /*background-color: red;*/
+    /*margin: 0.5%;*/
+    margin-left: 0.3%;
+    margin-right: 0.3%;
+}
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    /*height: 50px;*/
+}
+left {
+    position: fixed;
+    top: 0;
+    left: -1%;
+    right: 0;
+}
+right {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+table {
+    width: 100%;
+    border-spacing: 0;
+}
+
+.table {
+    width: 100%;
+    border: 0.5px gray dotted;
+}
+
+.tr {
+    border: 0.5px gray dotted;
+}
+
+.non-tr {
+    border: 0;
+}
+
+table.products {
+    font-size: 0.875rem;
+}
+
+table.products tr {
+    background-color: rgb(96 165 250);
+}
+
+table.products th {
+    color: #ffffff;
+    padding: 0.5rem;
+}
+
+table tr.items {
+    /*background-color: rgb(241 245 249);*/
+}
+
+table tr.items td {
+    padding: 0.5rem;
+}
+
+.total {
+    text-align: right;
+    margin-top: 1rem;
+    font-size: 0.875rem;
+}
+
+.red {
+    color: red;
+}
+
+.uppercase {
+    text-transform: uppercase
+}
+
+/* Common styling for all borders */
+.border-text {
+    position: absolute;
+    font-size: 0.8em;
+    /*color: #333;*/
+    background-color: #a6d3e2;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/* Top border */
+.border-top {
+    top: -95px;
+    white-space: nowrap;
+    left: -0.5%;
+}
+
+.image-top{
+    top: -5.5%;
+    white-space: nowrap;
+    background-color: #a6d3e2;
+}
+.border-top::before {
+    content: "..ANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV .STANSERV .STANSERV .STANSERV .STANSERV .STANSERV .STANSERV.STAN";
+}
+
+/* Bottom border */
+.border-bottom {
+    bottom: -200%;
+    /*bottom: -82.99px;*/
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+.border-bottom::before {
+    content: "STANSERV . STANSERV  . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSEV . ST";
+}
+
+/* Left border */
+.border-left {
+    top: 108.9%;
+    left: 1%;
+    transform: translateY(-50%) rotate(-90deg);
+    transform-origin: left;
+    white-space: nowrap;
+}
+.border-left::before {
+    content: "STANSERV . STANSERV . STANSERV .STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV .STA";
+}
+
+/* Right border */
+.border-right {
+    top: 108.5%;
+    right: 0;
+    transform: translateY(-50%) rotate(90deg);
+    transform-origin: right;
+    white-space: nowrap;
+}
+.border-right::before {
+    content: "STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . STANSERV . ST";
+}

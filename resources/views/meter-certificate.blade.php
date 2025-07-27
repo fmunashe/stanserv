@@ -6,34 +6,75 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Meter Calibration Certificate</title>
-    <link rel="stylesheet" href="{{ public_path('pdf.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ public_path('meter-pdf.css') }}" type="text/css">
 </head>
 <body>
 <header>
-
+    <div class="border-text border-top"></div>
+    <div class="image-top border-text" style="background-color: #a6d3e2; width: 100%;">
+        <table class="w-full" style="padding-left:  1%">
+            <tr>
+                <td class="w-half">
+                    <img src="{{ public_path('images/logo-latest.png') }}" alt="saz" width="80%"/>
+                </td>
+                <td class="w-half">
+                    <h2>Meter Calibration Certificate No. : {{ $record->certificate->certificate_number??null }}</h2>
+                </td>
+            </tr>
+        </table>
+    </div>
 </header>
 
-<footer>
-    <div class="margin-top">
-        <table class="w-full margin-top">
-            <tr>
-                <td style="width: 40%">
+<left>
+    <div class="border-text border-left"></div>
+</left>
+<right>
+    <div class="border-text border-right"></div>
+</right>
+{{--<footer>--}}
+{{--    <div class="margin-top">--}}
+{{--        <table class="w-full margin-top">--}}
+{{--            <tr>--}}
+{{--                <td style="width: 40%">--}}
 
+{{--                </td>--}}
+{{--                <td style="width: 60%">--}}
+{{--                    <table class="w-full">--}}
+{{--                        <tr>--}}
+{{--                            <td style="width: 80%">--}}
+{{--                                <h3>www.sgs-stanserv.com</h3>--}}
+{{--                            </td>--}}
+{{--                            <td style="width: 50%"><h5>CERTIFICATE--}}
+{{--                                    NO. {{$record->certificate->certificate_number??null}}</h5></td>--}}
+{{--                        </tr>--}}
+{{--                    </table>--}}
+{{--                </td>--}}
+{{--            </tr>--}}
+{{--        </table>--}}
+{{--    </div>--}}
+{{--</footer>--}}
+<footer>
+    <div class="margin-top" style="background-color: #a6d3e2;margin: 0.5%">
+        <table class="w-full">
+            <tr>
+                <td style="width: 2%"></td>
+                <td style="width: 18%">
+                    <img src="{{public_path('/images/saz-logo3.svg')}}" alt="SAZ" width="110" height="110"/>
                 </td>
-                <td style="width: 60%">
+                <td style="width: 80%">
                     <table class="w-full">
                         <tr>
-                            <td style="width: 80%">
-                                <h3>www.sgs-stanserv.com</h3>
+                            <td style="width: 80%"><h6 class="red">ISO 45001: 2018 OH&S MANAGEMENT SYSTEM CERTIFIED</h6>
                             </td>
-                            <td style="width: 50%"><h5>CERTIFICATE
-                                    NO. {{$record->certificate->certificate_number??null}}</h5></td>
+                            <td style="width: 50%"><h6 class="red">&copy; CERTIFICATE
+                                    NO. {{$record->certificate->certificate_number??null}}</h6></td>
                         </tr>
                     </table>
                 </td>
             </tr>
         </table>
     </div>
+    <div class="border-text border-bottom"></div>
 </footer>
 <table class="w-full">
     <tr>
@@ -301,11 +342,11 @@
     <h4><u>METER PASSED CALIBRATION AND ASSIZE TESTS.</u></h4>
 </div>
 
-<p>CALIBRATOR SECURED WITH SEALING PLIERS No. <span style="padding-left: 14.3%;padding-right: 2%">:</span>{{$record->sealing_pliers_number??null}}</p>
+<p>CALIBRATOR SECURED WITH SEALING PLIERS No. <span style="padding-left: 14.3%;padding-right: 2%">=</span>{{$record->sealing_pliers_number??null}}</p>
 
-<p>REGISTER SECURED WITH SEALING PLIERS No. <span style="padding-left: 16%;padding-right: 2%">:</span>{{$record->sealing_pliers_number??null}}</p>
+<p>REGISTER SECURED WITH SEALING PLIERS No. <span style="padding-left: 16%;padding-right: 2%">=</span>{{$record->sealing_pliers_number??null}}</p>
 
-<p>AVERAGE METER % ERROR BEFORE ANY ADJUSTMENTS <span style="padding-left: 11%;padding-right: 1.5%">=</span> {{$record->avg_meter_percentage_error_before_adjustments??null}}<span style="padding-left: 3%">%</span></p>
+<p>AVERAGE METER % ERROR BEFORE ANY ADJUSTMENTS <span style="padding-left: 11%;padding-right: 1.5%">=</span> {{$record->avg_meter_percentage_error_before_adjustments??null}}<span style="padding-left: 2%">%</span></p>
 
 <p>AVERAGE METER % ERROR FOR THE LAST FOUR READINGS <span style="padding-left: 9.5%;padding-right: 1.5%">=</span> {{$record->avg_meter_percentage_error_for_the_last_four_readings??null}} <span style="padding-left: 2%">%</span></p>
 <p>AVERAGE METER FACTOR FOR THE LAST FOUR READINGS <span style="padding-left: 10%;padding-right: 1.5%">=</span> {{$record->avg_meter_factor_for_the_last_four_readings??null}}</p>

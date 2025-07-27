@@ -29,4 +29,10 @@ class CreateMeterCalibration extends CreateRecord
             'certificate_number' => $certificateNumber
         ]);
     }
+
+
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('edit', ['record' => $this->getRecord()]);
+    }
 }
