@@ -47,5 +47,8 @@ class MeterCalibration extends Model
     {
         return $this->hasOne(MeterCalibrationCertificate::class);
     }
-
+    public function userSignature(): BelongsTo
+    {
+        return $this->belongsTo(Signature::class,'signature_id','id');
+    }
 }

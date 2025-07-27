@@ -23,4 +23,8 @@ class Signature extends Model
     {
        return $this->belongsTo(PumpCalibration::class);
     }
+    public function meterCalibration(): BelongsTo
+    {
+       return $this->belongsTo(MeterCalibration::class);
+    }
 }
