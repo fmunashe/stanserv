@@ -11,7 +11,7 @@
 <body>
 <header>
     <div class="border-text border-top"></div>
-    <div class="image-top border-text" style="background-color: #a6d3e2; width: 100%;">
+    <div class="image-top border-text" style="background-color: #a6d3e2; width: 100%;border-bottom:2px">
         <table class="w-full" style="padding-left:  1%">
             <tr>
                 <td class="w-half">
