@@ -139,10 +139,11 @@ table tr.items td {
     top: -95px;
     white-space: nowrap;
     left: -0.5%;
+    height: 90px;
 }
 
 .image-top{
-    top: -5.5%;
+    top: -2.5%;
     white-space: nowrap;
     background-color: #a6d3e2;
 }
